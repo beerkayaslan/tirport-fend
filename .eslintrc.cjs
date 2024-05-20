@@ -42,5 +42,8 @@ module.exports = {
     "tailwindcss/no-contradicting-classname": "error",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "no-unused-expressions": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn"],
   },
 };
