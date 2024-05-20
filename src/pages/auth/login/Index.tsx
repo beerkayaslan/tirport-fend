@@ -1,12 +1,43 @@
-import { Form, Input } from "antd";
+import "@/assets/icons";
+
+import { Form, Input, message } from "antd";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { EyeIcon, EyeSlashIcon } from "@/assets/icons";
 import loginLeftImg from "@/assets/imgs/loginleft.png";
 import logo from "@/assets/imgs/logo.png";
 import Button from "@/components/Button/Button";
 import FallbackPageWrapper from "@/components/Fallback/FallbackPageWrapper";
+import { useLoginMutation } from "@/store/api/auth/api";
+import { SET_USER_COOKIE } from "@/store/reducer/authSlice";
+import { LoginRequestDto } from "@/types/auth/type";
+import type { ResponseError } from "@/types/utils";
 
 export default function Login() {
+  const [loginMutate] = useLoginMutation();
+  const [submitLoader, setSubmitLoader] = useState(false);
+  const dispatch = useDispatch();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const onFinish = async (values: LoginRequestDto) => {
+    setSubmitLoader(true);
+    await loginMutate(values)
+      .unwrap()
+      .then((res) => {
+        message.success("Giriş başarılı");
+        dispatch(SET_USER_COOKIE(res));
+        setSubmitLoader(false);
+      })
+      .catch((err: ResponseError) => {
+        err.data.message.forEach((msg) => {
+          message.error(msg);
+        });
+        setSubmitLoader(false);
+      });
+  };
+
   return (
     <FallbackPageWrapper>
       <div className="flex min-h-screen flex-col justify-between lg:flex-row">
@@ -38,17 +69,22 @@ export default function Login() {
                 Hesap Oluştur
               </Link>
             </header>
-            <Form>
+            <Form onFinish={onFinish}>
               <Form.Item
-                name="username"
+                name="email"
                 rules={[
                   {
                     required: true,
-                    message: "Lütfen Kullanıcı adınızı giriniz!",
+                    type: "email",
+                    message: "Lütfen E-posta adresinizi giriniz!",
                   },
                 ]}
               >
-                <Input className="h-12" placeholder="Kullanıcı Adı" autoFocus />
+                <Input
+                  className="h-12 !border-gray-400 !bg-primary text-lg text-white placeholder:text-gray-300"
+                  placeholder="E-posta"
+                  autoFocus
+                />
               </Form.Item>
               <Form.Item
                 name="password"
@@ -56,7 +92,35 @@ export default function Login() {
                   { required: true, message: "Lütfen Şifrenizi giriniz!" },
                 ]}
               >
-                <Input.Password placeholder="Şifre" className="h-12" />
+                <Input.Password
+                  placeholder="Şifre"
+                  className="auth-password-input h-12 !border-gray-400 !bg-primary text-lg text-white placeholder:text-gray-300"
+                  iconRender={(visible) => {
+                    return (
+                      <>
+                        {visible ? (
+                          <EyeIcon
+                            onClick={() =>
+                              setPasswordVisible((prevState) => !prevState)
+                            }
+                            className="cursor-pointer"
+                          />
+                        ) : (
+                          <EyeSlashIcon
+                            onClick={() =>
+                              setPasswordVisible((prevState) => !prevState)
+                            }
+                            className="cursor-pointer"
+                          />
+                        )}
+                      </>
+                    );
+                  }}
+                  visibilityToggle={{
+                    visible: passwordVisible,
+                    onVisibleChange: setPasswordVisible,
+                  }}
+                />
               </Form.Item>
               <div className="mb-5 flex justify-end text-gray-300">
                 <Link
@@ -71,6 +135,7 @@ export default function Login() {
                   className="h-11 w-full text-base font-bold"
                   variant="white"
                   htmlType="submit"
+                  loading={submitLoader}
                 >
                   GİRİŞ YAP
                 </Button>

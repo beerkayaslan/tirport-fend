@@ -14,7 +14,14 @@ dayjs.locale("tr");
 function App() {
   return (
     <Provider store={store}>
-      <ConfigProvider locale={trTR}>
+      <ConfigProvider
+        locale={trTR}
+        theme={{
+          token: {
+            colorPrimary: "#002E6D",
+          },
+        }}
+      >
         <AuthProvider>
           <BrowserRouter>
             <Router />
