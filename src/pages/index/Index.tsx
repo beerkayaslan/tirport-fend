@@ -1,3 +1,5 @@
+import FallbackPageWrapper from "@/components/Fallback/FallbackPageWrapper";
+
 export default function index() {
-  return <div>testtest</div>;
+  return <FallbackPageWrapper>testtest</FallbackPageWrapper>;
 }

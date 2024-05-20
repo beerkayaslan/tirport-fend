@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { FallbackProvider } from "@/components/Fallback/FallbackProvider";
 import Loader from "@/components/Loader";
+import AuthLayout from "@/layouts/AuthLayout";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { ROUTES } from "@/router/url";
 import { RootState } from "@/store/index";
@@ -35,11 +36,13 @@ export default function Router() {
   }
 
   return (
-    <FallbackProvider>
-      <Routes>
-        <Route path={ROUTES.LOGIN.PATH} Component={Login} />
-        <Route path="*" element={<Navigate to={ROUTES.LOGIN.PATH} />} />
-      </Routes>
-    </FallbackProvider>
+    <AuthLayout>
+      <FallbackProvider>
+        <Routes>
+          <Route path={ROUTES.LOGIN.PATH} Component={Login} />
+          <Route path="*" element={<Navigate to={ROUTES.LOGIN.PATH} />} />
+        </Routes>
+      </FallbackProvider>
+    </AuthLayout>
   );
 }

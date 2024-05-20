@@ -1,7 +1,9 @@
+import FallbackPageWrapper from "@/components/Fallback/FallbackPageWrapper";
+
 export default function Login() {
   return (
-    <div>
+    <FallbackPageWrapper>
       <h1>Login</h1>
-    </div>
+    </FallbackPageWrapper>
   );
 }
