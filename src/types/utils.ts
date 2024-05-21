@@ -1,4 +1,4 @@
-export type ResponseError = {
+export type Response = {
   data: { message: string[] | string; error: string; statusCode: number };
   status: number;
 };

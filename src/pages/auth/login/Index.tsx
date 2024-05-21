@@ -12,7 +12,7 @@ import useEnterKeyPress from '@/hooks/useEnterKeyPress';
 import { useLoginMutation } from '@/store/api/auth/api';
 import { SET_USER_COOKIE } from '@/store/reducer/authSlice';
 import { LoginRequestDto } from '@/types/auth/type';
-import type { ResponseError } from '@/types/utils';
+import type { Response } from '@/types/utils';
 
 export default function Login() {
   const [loginMutate] = useLoginMutation();
@@ -30,7 +30,7 @@ export default function Login() {
         message.success('Giriş başarılı');
         dispatch(SET_USER_COOKIE(res));
       })
-      .catch((err: ResponseError) => {
+      .catch((err: Response) => {
         if (typeof err.data.message === 'string') {
           message.error(err.data.message);
         }

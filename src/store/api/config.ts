@@ -13,6 +13,7 @@ export default function baseQuery(URL: string) {
       if (user && user.token.accessToken) {
         headers.set('Authorization', `Bearer ${user.token.accessToken.jwt}`);
       }
+      headers.set('Content-Type', 'application/json');
       return headers;
     }
   });
