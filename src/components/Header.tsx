@@ -27,7 +27,8 @@ export default function Header() {
   const USER = useSelector((state: RootState) => state.auth.USER);
 
   return (
-    <div className="fixed left-0 top-0 flex h-14 w-full items-center justify-end bg-white pr-10 shadow">
+    <div className="fixed left-0 top-0 flex h-14 w-full items-center justify-end bg-white pr-10 shadow-md">
+      <div className="mx-8 h-8 border-r border-r-primary bg-red-500"></div>
       <Dropdown menu={{ items }} trigger={['click']} className="cursor-pointer">
         <div className="flex items-center">
           <div className="mr-3 flex flex-col items-end">

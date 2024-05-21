@@ -22,23 +22,23 @@ import { URLS } from '@/router/url';
 const items: MenuProps['items'] = [
   {
     key: '1',
-    icon: <TirboardIcon className="size-[21px]" />,
+    icon: <TirboardIcon className="size-[20px]" />,
     label: <Link to={URLS.INDEX}>Tırboard</Link>
   },
   {
     key: '2',
     label: 'Taşıma Yönetimi',
-    icon: <TransportMethodIcon className="size-[21px]" />
+    icon: <TransportMethodIcon className="size-[20px]" />
   },
   {
     key: '3',
     label: 'Rampa Yönetimi',
-    icon: <RampManagementIcon className="size-[21px]" />
+    icon: <RampManagementIcon className="size-[20px]" />
   },
   {
     key: '4',
     label: 'Şirket Yönetimi',
-    icon: <CompanyManagementIcon className="size-[21px]" />,
+    icon: <CompanyManagementIcon className="size-[20px]" />,
     children: [
       { key: '5', label: 'Şirket Bilgileri' },
       { key: '6', label: 'Projeler' },
@@ -50,12 +50,12 @@ const items: MenuProps['items'] = [
   {
     key: '10',
     label: 'Kullanıcı Yönetimi',
-    icon: <UserManagementIcon className="size-[21px]" />
+    icon: <UserManagementIcon className="size-[20px]" />
   },
   {
     key: '11',
     label: 'Envanter',
-    icon: <InventoryIcon className="size-[21px]" />,
+    icon: <InventoryIcon className="size-[20px]" />,
     children: [
       { key: '12', label: 'Sürücü Envanteri' },
       { key: '13', label: 'Araç Envanteri' }
@@ -64,22 +64,22 @@ const items: MenuProps['items'] = [
   {
     key: '14',
     label: 'Spot Market',
-    icon: <SpotMarketIcon className="size-[21px]" />
+    icon: <SpotMarketIcon className="size-[20px]" />
   },
   {
     key: '15',
     label: 'Fatura Yönetimi ',
-    icon: <BillManagementIcon className="size-[21px]" />
+    icon: <BillManagementIcon className="size-[20px]" />
   },
   {
     key: '16',
     label: 'Tamamlanmış Taşımalar',
-    icon: <CompletedTransportationIcon className="size-[21px]" />
+    icon: <CompletedTransportationIcon className="size-[20px]" />
   },
   {
     key: '17',
     label: 'Raporlar',
-    icon: <ReportsIcon className="size-[21px]" />
+    icon: <ReportsIcon className="size-[20px]" />
   }
 ];
 
