@@ -1,25 +1,25 @@
-import { lazy } from "react";
-import { useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { FallbackProvider } from "@/components/Fallback/FallbackProvider";
-import Loader from "@/components/Loader";
-import AuthLayout from "@/layouts/AuthLayout";
-import DashboardLayout from "@/layouts/DashboardLayout";
-import { ROUTES } from "@/router/url";
-import { RootState } from "@/store/index";
-import { AuthStatusEnum } from "@/types/auth/type";
+import { FallbackProvider } from '@/components/Fallback/FallbackProvider'
+import Loader from '@/components/Loader'
+import AuthLayout from '@/layouts/AuthLayout'
+import DashboardLayout from '@/layouts/DashboardLayout'
+import { ROUTES } from '@/router/url'
+import { RootState } from '@/store/index'
+import { AuthStatusEnum } from '@/types/auth/type'
 
-const Index = lazy(() => import("@/pages/index/Index"));
-const Login = lazy(() => import("@/pages/auth/login/Index"));
+const Index = lazy(() => import('@/pages/index/Index'))
+const Login = lazy(() => import('@/pages/auth/login/Index'))
 
 export default function Router() {
   const AUTH_STATUS = useSelector(
-    (state: RootState) => state.auth.AUTH_STATUS,
-  ) as AuthStatusEnum;
+    (state: RootState) => state.auth.AUTH_STATUS
+  ) as AuthStatusEnum
 
   if (AUTH_STATUS === AuthStatusEnum.LOADING) {
-    return <Loader />;
+    return <Loader />
   }
 
   if (AUTH_STATUS === AuthStatusEnum.LOGGED_IN) {
@@ -32,7 +32,7 @@ export default function Router() {
           </Routes>
         </FallbackProvider>
       </DashboardLayout>
-    );
+    )
   }
 
   return (
@@ -44,5 +44,5 @@ export default function Router() {
         </Routes>
       </FallbackProvider>
     </AuthLayout>
-  );
+  )
 }

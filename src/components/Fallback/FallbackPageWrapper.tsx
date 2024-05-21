@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { usePageRoute } from "@/components/Fallback/usePageRoute";
+import { usePageRoute } from '@/components/Fallback/usePageRoute'
 
 interface PageWrapperProps {
   children?:
@@ -11,22 +11,22 @@ interface PageWrapperProps {
     | string
     | number
     | null
-    | undefined;
+    | undefined
 }
 
 export const FallbackPageWrapper: React.FC<PageWrapperProps> = ({
-  children,
+  children
 }: PageWrapperProps) => {
-  const { onLoad } = usePageRoute();
+  const { onLoad } = usePageRoute()
 
-  const render = React.useMemo(() => children, [children]);
+  const render = React.useMemo(() => children, [children])
 
   React.useEffect(() => {
-    onLoad(render);
+    onLoad(render)
     // window.scrollTo(0, 0);
-  }, [onLoad, render]);
+  }, [onLoad, render])
 
-  return render;
-};
+  return render
+}
 
-export default FallbackPageWrapper;
+export default FallbackPageWrapper

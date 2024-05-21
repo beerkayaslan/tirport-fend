@@ -3,5 +3,5 @@ export default function Loader() {
     <div className="flex h-screen w-full flex-col items-center justify-center px-4">
       <h3>Yükleniyor...</h3>
     </div>
-  );
+  )
 }

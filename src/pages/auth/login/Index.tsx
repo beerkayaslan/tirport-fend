@@ -1,42 +1,42 @@
-import "@/assets/icons";
+import '@/assets/icons'
 
-import { Form, Input, message } from "antd";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Form, Input, message } from 'antd'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { EyeIcon, EyeSlashIcon } from "@/assets/icons";
-import loginLeftImg from "@/assets/imgs/loginleft.png";
-import logo from "@/assets/imgs/logo.png";
-import Button from "@/components/Button/Button";
-import FallbackPageWrapper from "@/components/Fallback/FallbackPageWrapper";
-import { useLoginMutation } from "@/store/api/auth/api";
-import { SET_USER_COOKIE } from "@/store/reducer/authSlice";
-import { LoginRequestDto } from "@/types/auth/type";
-import type { ResponseError } from "@/types/utils";
+import { EyeIcon, EyeSlashIcon } from '@/assets/icons'
+import loginLeftImg from '@/assets/imgs/loginleft.png'
+import logo from '@/assets/imgs/logo.png'
+import Button from '@/components/Button/Button'
+import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper'
+import { useLoginMutation } from '@/store/api/auth/api'
+import { SET_USER_COOKIE } from '@/store/reducer/authSlice'
+import { LoginRequestDto } from '@/types/auth/type'
+import type { ResponseError } from '@/types/utils'
 
 export default function Login() {
-  const [loginMutate] = useLoginMutation();
-  const [submitLoader, setSubmitLoader] = useState(false);
-  const dispatch = useDispatch();
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loginMutate] = useLoginMutation()
+  const [submitLoader, setSubmitLoader] = useState(false)
+  const dispatch = useDispatch()
+  const [passwordVisible, setPasswordVisible] = useState(false)
 
   const onFinish = async (values: LoginRequestDto) => {
-    setSubmitLoader(true);
+    setSubmitLoader(true)
     await loginMutate(values)
       .unwrap()
       .then((res) => {
-        message.success("Giriş başarılı");
-        dispatch(SET_USER_COOKIE(res));
-        setSubmitLoader(false);
+        message.success('Giriş başarılı')
+        dispatch(SET_USER_COOKIE(res))
+        setSubmitLoader(false)
       })
       .catch((err: ResponseError) => {
         err.data.message.forEach((msg) => {
-          message.error(msg);
-        });
-        setSubmitLoader(false);
-      });
-  };
+          message.error(msg)
+        })
+        setSubmitLoader(false)
+      })
+  }
 
   return (
     <FallbackPageWrapper>
@@ -75,9 +75,9 @@ export default function Login() {
                 rules={[
                   {
                     required: true,
-                    type: "email",
-                    message: "Lütfen E-posta adresinizi giriniz!",
-                  },
+                    type: 'email',
+                    message: 'Lütfen E-posta adresinizi giriniz!'
+                  }
                 ]}
               >
                 <Input
@@ -89,7 +89,7 @@ export default function Login() {
               <Form.Item
                 name="password"
                 rules={[
-                  { required: true, message: "Lütfen Şifrenizi giriniz!" },
+                  { required: true, message: 'Lütfen Şifrenizi giriniz!' }
                 ]}
               >
                 <Input.Password
@@ -114,11 +114,11 @@ export default function Login() {
                           />
                         )}
                       </>
-                    );
+                    )
                   }}
                   visibilityToggle={{
                     visible: passwordVisible,
-                    onVisibleChange: setPasswordVisible,
+                    onVisibleChange: setPasswordVisible
                   }}
                 />
               </Form.Item>
@@ -155,11 +155,11 @@ export default function Login() {
               </a>
             </nav>
             <p className="mt-6 text-center text-sm">
-              Tırport ©{new Date().getFullYear()}{" "}
+              Tırport ©{new Date().getFullYear()}{' '}
             </p>
           </div>
         </div>
       </div>
     </FallbackPageWrapper>
-  );
+  )
 }
