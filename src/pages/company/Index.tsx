@@ -1,26 +1,31 @@
-import { Avatar } from 'antd';
+import { Avatar, Skeleton } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { BillInformationIcon, CompanyDetailInfoIcon, CompanyInfoIcon } from '@/assets/icons';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import { URLS } from '@/router/url';
+import { useCompanyInformationQuery } from '@/store/api/company/api';
 
 export default function Company() {
+  const { data, isLoading } = useCompanyInformationQuery();
+
   return (
     <FallbackPageWrapper>
       <div className="mb-8 flex items-center gap-x-2.5">
         <CompanyInfoIcon />
-        <span className="text-lg font-semibold">Şirket Bilgileri</span>
+        <span className="text-lg font-semibold">Şirket Bilgileri</span>Button
       </div>
       <div className=" flex items-center gap-x-4">
         <Avatar size={60} className="bg-secondary">
           AÖ
         </Avatar>
         <div>
-          <b className="mb-1 block text-base">Alp Özler Uluslarası Nakliyat Tah. Tic. Ltd. Şti.</b>
+          <b className="mb-1 block text-base">
+            {isLoading ? <Skeleton.Button size="small" /> : data?.name}
+          </b>
           <div>
             <b>TIRPORT Şirket ID: </b>
-            <span>190120312498213</span>
+            <span>{data?.id}</span>
           </div>
         </div>
       </div>
@@ -37,19 +42,19 @@ export default function Company() {
       <div className="flex flex-col gap-y-3">
         <div className="flex">
           <div className="w-40">Şirket Unvanı:</div>
-          <div className="font-semibold">Company 2</div>
+          <div className="font-semibold">{data?.name}</div>
         </div>
         <div className="flex">
           <div className="w-40">Ülke:</div>
-          <div className="font-semibold">Turkiye</div>
+          <div className="font-semibold">{data?.companyCountry.name}</div>
         </div>
         <div className="flex">
           <div className="w-40">İl:</div>
-          <div className="font-semibold">İstanbul</div>
+          <div className="font-semibold">{data?.companyCity.name}</div>
         </div>
         <div className="flex">
           <div className="w-40">Adres:</div>
-          <div className="font-semibold">123 Business Rd 2</div>
+          <div className="font-semibold">{data?.companyAddress}</div>
         </div>
       </div>
       <hr className="my-10" />
@@ -60,23 +65,23 @@ export default function Company() {
       <div className="flex flex-col gap-y-3">
         <div className="flex">
           <div className="w-40">Vergi Dairesi:</div>
-          <div className="font-semibold">KADIKOY</div>
+          <div className="font-semibold">{data?.taxOffice.name}</div>
         </div>
         <div className="flex">
           <div className="w-40">Vergi Numarası:</div>
-          <div className="font-semibold">1240567892</div>
+          <div className="font-semibold">{data?.taxId}</div>
         </div>
         <div className="flex">
           <div className="w-40">Ülke:</div>
-          <div className="font-semibold">TURKEY</div>
+          <div className="font-semibold">{data?.invoiceCountry.name}</div>
         </div>
         <div className="flex">
           <div className="w-40">İl:</div>
-          <div className="font-semibold">İstanbul</div>
+          <div className="font-semibold">{data?.invoiceCity.name}</div>
         </div>
         <div className="flex">
           <div className="w-40">Açık Adres:</div>
-          <div className="font-semibold">123 Business Rd 2</div>
+          <div className="font-semibold">{data?.invoiceAddress}</div>
         </div>
       </div>
       <div className="flex justify-end">
