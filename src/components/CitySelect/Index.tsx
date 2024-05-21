@@ -1,12 +1,21 @@
-import { Select } from 'antd';
+import { Form, Select } from 'antd';
+import { FormItemProps } from 'antd/lib';
 
 import { useCityGetQuery } from '@/store/api/general/api';
 
-export default function CitySelect({ value }: { value?: string }) {
-  const { data } = useCityGetQuery({ take: 10, skip: 0, country: 'TURKEY' });
+export default function CitySelect({
+  value,
+  ...props
+}: FormItemProps & {
+  value?: string | number;
+}) {
+  const { data } = useCityGetQuery({ take: 10, skip: 30, country: 'TURKEY' });
 
   // rename array list id to value and name to label
   const options = data?.data.map((item) => ({ value: item.id, label: item.name }));
-
-  return <Select options={options} value={value} placeholder="Seçiniz"></Select>;
+  return (
+    <Form.Item label="Şehir" {...props}>
+      <Select options={options} value={value} placeholder="Seçiniz" />
+    </Form.Item>
+  );
 }

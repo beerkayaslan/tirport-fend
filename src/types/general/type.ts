@@ -27,15 +27,12 @@ export interface CityResponse {
 }
 
 export interface TaxOfficeResponse {
-  data: [
-    {
-      id: string;
-      name: string;
-      cityId: string;
-      countryId: string;
-    }
-  ];
-  totalCount: number;
+  [key: string]: {
+    id: string;
+    name: string;
+    cityId: string;
+    countryId: string;
+  };
 }
 
 export interface TaxOfficeRequest extends PaginationRequest {

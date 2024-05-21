@@ -1,28 +1,32 @@
-import { Select } from 'antd';
+import { Form, Select } from 'antd';
+import { FormItemProps } from 'antd/lib';
 
 import { useTaxOfficeGetQuery } from '@/store/api/general/api';
 
 export default function TaxOfficeSelect({
   value,
   city,
-  country
-}: {
+  country,
+  ...props
+}: FormItemProps & {
+  value?: string | number;
   city: string;
   country: string;
-  value?: string;
 }) {
   const { data } = useTaxOfficeGetQuery({ take: 10, skip: 0, city, country });
 
-  if (!city || !country) {
-    return null;
-  }
+  const options = data
+    ? (data as unknown as { id: string; name: string; cityId: string; countryId: string }[]).map(
+        (item) => ({
+          label: item.name,
+          value: item.id
+        })
+      )
+    : [];
 
-  console.log(data);
-
-  return null;
-
-  // rename array list id to value and name to label
-  // const options = data?.data.map((item) => ({ value: item.id, label: item.name }));
-
-  // return <Select options={options} value={value} placeholder="Seçiniz"></Select>;
+  return (
+    <Form.Item label="Vergi Dairesi" {...props}>
+      <Select options={options} value={value} placeholder="Seçiniz" />
+    </Form.Item>
+  );
 }
