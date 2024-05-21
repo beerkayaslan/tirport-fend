@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <div className="fixed left-0 top-0 z-10 flex h-14 w-full items-center justify-end bg-white pr-10 shadow-md">
       <div className="mx-8 h-8 border-r border-r-primary bg-red-500"></div>
-      <Dropdown menu={{ items }} trigger={['click']} className="cursor-pointer">
+      <Dropdown menu={{ items }} trigger={['click']} className="cursor-pointer select-none">
         <div className="flex items-center">
           <div className="mr-3 flex flex-col items-end">
             <div className="font-semibold">{USER?.identity.name}</div>

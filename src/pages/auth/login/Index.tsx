@@ -69,7 +69,7 @@ export default function Login() {
           <div className="mx-auto w-full flex-1 pt-24">
             <header className="mb-8 flex items-center justify-between">
               <h3 className="text-2xl ">Giriş Yapın</h3>
-              <Link to="/#" className="text-lg font-semibold text-inherit underline">
+              <Link to="#" className="text-lg font-semibold text-inherit underline">
                 Hesap Oluştur
               </Link>
             </header>
