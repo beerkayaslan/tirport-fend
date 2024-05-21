@@ -1,5 +1,5 @@
-import * as React from 'react'
-import ProgressBar from 'react-topbar-progress-indicator'
+import * as React from 'react';
+import ProgressBar from 'react-topbar-progress-indicator';
 
 // Progress Bar -> Configuration
 ProgressBar.config({
@@ -9,32 +9,30 @@ ProgressBar.config({
   },
   shadowBlur: 5,
   barThickness: 3
-})
+});
 
-export type FallbackType = NonNullable<React.ReactNode> | null
+export type FallbackType = NonNullable<React.ReactNode> | null;
 
 export interface FallbackContextType {
-  updateFallback: (fallbackElement: FallbackType) => void
+  updateFallback: (fallbackElement: FallbackType) => void;
 }
 
 export const FallbackContext = React.createContext<FallbackContextType>({
   updateFallback: () => {}
-})
+});
 
 interface FallbackProviderProps {
-  children: React.ReactNode | React.ReactElement | null
+  children: React.ReactNode | React.ReactElement | null;
 }
 
-export const FallbackProvider: React.FC<FallbackProviderProps> = ({
-  children
-}) => {
-  const [fallback, setFallback] = React.useState<FallbackType>(null)
+export const FallbackProvider: React.FC<FallbackProviderProps> = ({ children }) => {
+  const [fallback, setFallback] = React.useState<FallbackType>(null);
 
   const updateFallback = React.useCallback((fallbackElement: FallbackType) => {
-    setFallback(() => fallbackElement)
-  }, [])
+    setFallback(() => fallbackElement);
+  }, []);
 
-  const renderChildren = React.useMemo(() => children, [children])
+  const renderChildren = React.useMemo(() => children, [children]);
 
   return (
     <FallbackContext.Provider value={{ updateFallback }}>
@@ -49,5 +47,5 @@ export const FallbackProvider: React.FC<FallbackProviderProps> = ({
         {renderChildren}
       </React.Suspense>
     </FallbackContext.Provider>
-  )
-}
+  );
+};

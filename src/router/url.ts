@@ -1,19 +1,19 @@
 // auth
-const LOGIN = '/login'
-const REGISTER = '/register'
+const LOGIN = '/login';
+const REGISTER = '/register';
 
 // routes
-const INDEX = '/'
+const INDEX = '/';
 
-const DETAIL = 'detail/:id'
-const EDIT = 'edit/:id'
+const DETAIL = 'detail/:id';
+const EDIT = 'edit/:id';
 
-const ADDRESS = 'address'
-const COMPANY = 'company'
-const DRIVER = 'driver'
-const PROJECT = 'project'
-const USER = 'user'
-const VEHICLE = 'vehicle'
+const ADDRESS = 'address';
+const COMPANY = 'company';
+const DRIVER = 'driver';
+const PROJECT = 'project';
+const USER = 'user';
+const VEHICLE = 'vehicle';
 
 export const ROUTES = {
   INDEX: { PATH: INDEX },
@@ -55,7 +55,7 @@ export const ROUTES = {
     DETAIL: { PATH: DETAIL },
     EDIT: { PATH: EDIT }
   }
-}
+};
 
 export const URLS = {
   INDEX,
@@ -85,4 +85,4 @@ export const URLS = {
   VEHICLE: `/${VEHICLE}`,
   VEHICLE_DETAIL: (id: string) => `/${VEHICLE}/${DETAIL.replace(':id', id)}`,
   VEHICLE_EDIT: (id: string) => `/${VEHICLE}/${EDIT.replace(':id', id)}`
-}
+};

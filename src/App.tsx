@@ -1,15 +1,15 @@
-import 'dayjs/locale/tr'
+import 'dayjs/locale/tr';
 
-import { ConfigProvider } from 'antd'
-import trTR from 'antd/locale/tr_TR'
-import dayjs from 'dayjs'
-import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { ConfigProvider } from 'antd';
+import trTR from 'antd/locale/tr_TR';
+import dayjs from 'dayjs';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-import AuthProvider from '@/providers/AuthProvider'
-import Router from '@/router/Router'
-import { store } from '@/store/index'
-dayjs.locale('tr')
+import AuthProvider from '@/providers/AuthProvider';
+import Router from '@/router/Router';
+import { store } from '@/store/index';
+dayjs.locale('tr');
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         </AuthProvider>
       </ConfigProvider>
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;

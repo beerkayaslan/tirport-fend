@@ -1,8 +1,8 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react';
 
-import baseQuery from '@/store/api/config'
+import baseQuery from '@/store/api/config';
 
-const URL = import.meta.env.VITE_AUTH_API_URL
+const URL = import.meta.env.VITE_AUTH_API_URL;
 
 export const authApiService = createApi({
   reducerPath: 'authApi',
@@ -10,4 +10,4 @@ export const authApiService = createApi({
   refetchOnMountOrArgChange: true,
   refetchOnReconnect: true,
   endpoints: () => ({})
-})
+});

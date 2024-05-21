@@ -1,5 +1,5 @@
-import { authApiService } from '@/store/api/auth/service'
-import { LoginRequestDto, LoginResponseDto, User } from '@/types/auth/type'
+import { authApiService } from '@/store/api/auth/service';
+import { LoginRequestDto, LoginResponseDto, User } from '@/types/auth/type';
 
 const authApi = authApiService.injectEndpoints({
   endpoints: (build) => ({
@@ -17,6 +17,6 @@ const authApi = authApiService.injectEndpoints({
       })
     })
   })
-})
+});
 
-export const { useLoginMutation, useLazyMeQuery } = authApi
+export const { useLoginMutation, useLazyMeQuery } = authApi;
