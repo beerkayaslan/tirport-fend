@@ -28,8 +28,7 @@ export const ROUTES = {
 
   COMPANY: {
     PATH: COMPANY,
-    DETAIL: { PATH: DETAIL },
-    EDIT: { PATH: EDIT }
+    EDIT: { PATH: `${COMPANY}/${EDIT.replace(':id', '')}` }
   },
 
   DRIVER: {
@@ -67,8 +66,7 @@ export const URLS = {
   ADDRESS_EDIT: (id: string) => `/${ADDRESS}/${EDIT.replace(':id', id)}`,
 
   COMPANY: `/${COMPANY}`,
-  COMPANY_DETAIL: (id: string) => `/${COMPANY}/${DETAIL.replace(':id', id)}`,
-  COMPANY_EDIT: (id: string) => `/${COMPANY}/${EDIT.replace(':id', id)}`,
+  COMPANY_EDIT: `/${COMPANY}/${EDIT.replace('/:id', '')}`,
 
   DRIVER: `/${DRIVER}`,
   DRIVER_DETAIL: (id: string) => `/${DRIVER}/${DETAIL.replace(':id', id)}`,

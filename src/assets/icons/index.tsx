@@ -1,4 +1,7 @@
+import BillInformation from './files/bill-information.svg';
 import BillManagement from './files/bill-management.svg';
+import CompanyDetailInfo from './files/company-detail-info.svg';
+import CompanyInfo from './files/company-info.svg';
 import CompanyManagement from './files/company-management.svg';
 import CompletedTransportation from './files/completed-transportation.svg';
 import DownAngle from './files/down-angle.svg';
@@ -51,3 +54,15 @@ export const RampManagementIcon = ({ ...props }) => (
   <img {...props} src={RampManagement} alt="ramp-management" />
 );
 export const TirboardIcon = ({ ...props }) => <img {...props} src={Tirboard} alt="tirboard" />;
+
+export const CompanyInfoIcon = ({ ...props }) => (
+  <img {...props} src={CompanyInfo} className="size-12" alt="company-info" />
+);
+
+export const CompanyDetailInfoIcon = ({ ...props }) => (
+  <img {...props} src={CompanyDetailInfo} className="size-12" alt="company-detail-info" />
+);
+
+export const BillInformationIcon = ({ ...props }) => (
+  <img {...props} src={BillInformation} className="size-11" alt="bill-information" />
+);

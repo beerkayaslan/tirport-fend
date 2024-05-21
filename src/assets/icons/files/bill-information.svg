@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <clipPath id="bill_information_icon">
+      <rect id="Rectangle_22263" data-name="Rectangle 22263" width="42" height="42" fill="#002e6d"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_22207" data-name="Rectangle 22207" width="17.413" height="20.198" transform="translate(0 0)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+    </clipPath>
+  </defs>
+  <g id="Group_18103" data-name="Group 18103" transform="translate(0 2)">
+    <path id="Path_28364" data-name="Path 28364" d="M5.706,32.768H12.42v-1.6H5.706Zm0-4.513H12.42v-1.6H5.706Zm0-4.509H12.42v-1.6H5.706Zm11.576-2.56h3.324v-1.6H17.282ZM5.706,19.371H12.42v-1.6H5.706Zm11.576-3.428h5.792v-1.6H17.282Zm0-5.246H28.014V9.1H17.282ZM4.108,14.689h9.913V35.849H4.108Zm2.056-3.172h7.579v1.575H6.165Zm9.429-9.924h7.579V3.168H15.594ZM14.022,0V9.929H4.593V13.1H2.536V35.849H0v1.6H41.984v-1.6H20.538V31.1h3.346V29.5H18.966v6.34H15.594V4.765H29.7v7.008h1.577v-8.6H24.749V0Z" fill="#002e6d"/>
+    <g id="Group_18102" data-name="Group 18102" transform="translate(0 -2)">
+      <g id="Group_18101" data-name="Group 18101" clip-path="url(#bill_information_icon)">
+        <g id="Group_18781" data-name="Group 18781" transform="translate(26 16.802)">
+          <g id="Group_18048" data-name="Group 18048" transform="translate(-2 -1)" clip-path="url(#clip-path-2)">
+            <path id="Path_28238" data-name="Path 28238" d="M41.748,44.679c-.052.065-.157.224-.03.351s.9.927.9.927.09.1.2-.052a5.71,5.71,0,0,1,1.383-1.525s.265-.168.153-.336a2.179,2.179,0,0,0-.291-.333s-.1-.108-.291.052a4.213,4.213,0,0,0-1.117,1.177l-.452-.407s-.135-.176-.265-.045a2.332,2.332,0,0,0-.194.191" transform="translate(-38.011 -40.353)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <path id="Path_28239" data-name="Path 28239" d="M41.748,99.414c-.052.065-.157.224-.03.351s.9.927.9.927.09.1.2-.052a5.709,5.709,0,0,1,1.383-1.525s.265-.168.153-.336a2.179,2.179,0,0,0-.291-.333s-.1-.108-.291.052a4.213,4.213,0,0,0-1.117,1.177l-.452-.407s-.135-.176-.265-.045a2.331,2.331,0,0,0-.194.191" transform="translate(-38.011 -91.406)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <path id="Path_28240" data-name="Path 28240" d="M41.748,208.718c-.052.065-.157.224-.03.351s.9.927.9.927.09.1.2-.052a5.71,5.71,0,0,1,1.383-1.525s.265-.168.153-.336a2.179,2.179,0,0,0-.291-.333s-.1-.108-.291.052a4.213,4.213,0,0,0-1.117,1.177l-.452-.407s-.135-.176-.265-.045a2.33,2.33,0,0,0-.194.191" transform="translate(-38.011 -193.357)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <path id="Path_28241" data-name="Path 28241" d="M46.485,153.7l.533-.465s.185-.168.286-.045.258.32.258.32.163.146-.062.314a5.4,5.4,0,0,0-.476.42l.544.7a.131.131,0,0,1-.039.213c-.151.1-.381.263-.381.263a.156.156,0,0,1-.235-.062c-.106-.163-.4-.532-.4-.532l-.448.549s-.062.123-.23.028-.409-.263-.409-.263-.09-.078.084-.314.448-.566.448-.566l-.516-.5a.178.178,0,0,1,.006-.252,2.484,2.484,0,0,1,.286-.3s.1-.129.235.028.516.471.516.471" transform="translate(-41.497 -142.459)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <rect id="Rectangle_22203" data-name="Rectangle 22203" width="6.562" height="0.822" transform="translate(7.152 15.239)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <rect id="Rectangle_22204" data-name="Rectangle 22204" width="6.562" height="0.822" transform="translate(7.152 11.502)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <rect id="Rectangle_22205" data-name="Rectangle 22205" width="6.562" height="0.822" transform="translate(7.152 7.87)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <rect id="Rectangle_22206" data-name="Rectangle 22206" width="6.562" height="0.822" transform="translate(7.152 4.147)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+            <path id="Path_28242" data-name="Path 28242" d="M13.5.807a1.418,1.418,0,0,1,1.418,1.418V17.2A1.418,1.418,0,0,1,13.5,18.62H2.225A1.418,1.418,0,0,1,.807,17.2V2.225A1.418,1.418,0,0,1,2.225.807ZM13.5,0H2.225A2.227,2.227,0,0,0,0,2.225V17.2a2.227,2.227,0,0,0,2.225,2.225H13.5A2.227,2.227,0,0,0,15.725,17.2V2.225A2.227,2.227,0,0,0,13.5,0" transform="translate(0.844 0.385)" fill="#ffd100" stroke="#ffd100" stroke-width="0.2"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

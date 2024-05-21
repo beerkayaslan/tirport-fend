@@ -3,16 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html,body{
-    @apply h-full;
-}
-
 body{
     @apply text-primary text-[14px] font-[500] font-montserrat;
-}
-
-#root{
-    @apply h-full;
 }
 
 a:hover{

@@ -40,7 +40,7 @@ const items: MenuProps['items'] = [
     label: 'Şirket Yönetimi',
     icon: <CompanyManagementIcon className="size-[20px]" />,
     children: [
-      { key: '5', label: 'Şirket Bilgileri' },
+      { key: '5', label: <Link to={URLS.COMPANY}>Şirket Bilgileri</Link> },
       { key: '6', label: 'Projeler' },
       { key: '7', label: 'Tedarikçiler' },
       { key: '8', label: 'Müşteriler' },
@@ -90,7 +90,7 @@ export default function SidebarMenu() {
 
   return (
     <div
-      className="group fixed left-0 top-0 h-screen w-14 overflow-hidden bg-primary shadow transition-[width] hover:w-60"
+      className="group fixed left-0 top-0 z-10 h-screen w-14 overflow-hidden bg-primary shadow transition-[width] hover:w-60"
       onMouseLeave={leaveHandler}
     >
       <Link to={URLS.INDEX} className="mx-3.5 my-8 block h-14">

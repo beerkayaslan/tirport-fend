@@ -13,6 +13,9 @@ import { AuthStatusEnum } from '@/types/auth/type';
 const Index = lazy(() => import('@/pages/index/Index'));
 const Login = lazy(() => import('@/pages/auth/login/Index'));
 
+const Company = lazy(() => import('@/pages/company/Index'));
+const CompanyEdit = lazy(() => import('@/pages/company/Edit'));
+
 export default function Router() {
   const AUTH_STATUS = useSelector((state: RootState) => state.auth.AUTH_STATUS) as AuthStatusEnum;
 
@@ -26,6 +29,8 @@ export default function Router() {
         <FallbackProvider>
           <Routes>
             <Route path={ROUTES.INDEX.PATH} Component={Index} />
+            <Route path={ROUTES.COMPANY.PATH} Component={Company} />
+            <Route path={ROUTES.COMPANY.EDIT.PATH} Component={CompanyEdit} />
             <Route path="*" element={<Navigate to={ROUTES.INDEX.PATH} />} />
           </Routes>
         </FallbackProvider>
