@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useLazyMeQuery } from '@/store/api/auth/api';
 import { RootState } from '@/store/index';
 import { LOGGED_IN, LOGGED_OUT, SET_USER_COOKIE } from '@/store/reducer/authSlice';
 import { AuthStatusEnum, User } from '@/types/auth/type';
@@ -15,7 +14,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const AUTH_STATUS = useSelector((state: RootState) => state.auth.AUTH_STATUS);
 
   const USER = useMemo(() => (USER_COOKIE ? JSON.parse(USER_COOKIE) : null), [USER_COOKIE]) as User;
-  const [fetchMe] = useLazyMeQuery();
 
   useEffect(() => {
     if (!USER) {
@@ -58,17 +56,21 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     }
 
     if (USER) {
-      fetchMe()
-        .unwrap()
-        .then((res) => {
-          console.log(res);
+      fetch(`${AUTH_URL}/user/me`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${USER.token.accessToken.jwt}`
+        }
+      }).then(async (response) => {
+        console.log(response);
+        if (response.ok) {
           dispatch(LOGGED_IN(USER));
-        })
-        .catch(() => {
+        } else {
           dispatch(LOGGED_OUT());
-        });
+        }
+      });
     }
-  }, [USER, dispatch, fetchMe]);
+  }, [USER, dispatch]);
 
   useEffect(() => {
     if (AUTH_STATUS !== AuthStatusEnum.LOGGED_IN) {
