@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_21670" data-name="Group 21670" transform="translate(-622 -505)">
+    <g id="Rectangle_22842" data-name="Rectangle 22842" transform="translate(622 505)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <path id="user-alt-1" d="M5,21a7,7,0,0,1,14,0M16,7a4,4,0,1,1-4-4A4,4,0,0,1,16,7Z" transform="translate(622 505)" fill="none" stroke="#002e6d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

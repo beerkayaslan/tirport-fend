@@ -1,5 +1,9 @@
 import type { MenuProps } from 'antd';
 import { Avatar, Dropdown } from 'antd';
+import { useSelector } from 'react-redux';
+
+import { DownAngleIcon } from '@/assets/icons';
+import { RootState } from '@/store/index';
 
 const items: MenuProps['items'] = [
   {
@@ -20,15 +24,27 @@ const items: MenuProps['items'] = [
 ];
 
 export default function Header() {
+  const USER = useSelector((state: RootState) => state.auth.USER);
+
   return (
     <div className="fixed left-0 top-0 flex h-14 w-full items-center justify-end bg-white pr-10 shadow">
-      <Dropdown menu={{ items }} trigger={['click']}>
+      <Dropdown menu={{ items }} trigger={['click']} className="cursor-pointer">
         <div className="flex items-center">
           <div className="mr-3 flex flex-col items-end">
-            <div className="font-semibold">Furkan Yılmaz</div>
-            <small>furkanyilmaz@gmail.com</small>
+            <div className="font-semibold">{USER?.identity.name}</div>
+            <small>{USER?.identity.email}</small>
           </div>
-          <Avatar className="size-10 rounded-lg border border-primary">U</Avatar>
+          <Avatar
+            src={
+              <img
+                className="size-10"
+                src="https://randomuser.me/api/portraits/men/52.jpg"
+                alt="avatar"
+              />
+            }
+            className="size-10 rounded-lg border border-primary"
+          />
+          <DownAngleIcon width={10} className="ml-2" />
         </div>
       </Dropdown>
     </div>

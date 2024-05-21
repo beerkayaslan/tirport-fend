@@ -6,9 +6,13 @@ export interface LoginRequestDto {
 export interface LoginResponseDto extends User {}
 
 export interface User {
-  id: string;
-  name: string;
-  email: string;
+  identity: {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    isEnabled: boolean;
+  };
   token: {
     accessToken: {
       jwt: string;
