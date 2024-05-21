@@ -1,3 +1,5 @@
+import "@/assets/icons";
+
 import { Form, Input, message } from "antd";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -8,7 +10,6 @@ import loginLeftImg from "@/assets/imgs/loginleft.png";
 import logo from "@/assets/imgs/logo.png";
 import Button from "@/components/Button/Button";
 import FallbackPageWrapper from "@/components/Fallback/FallbackPageWrapper";
-import useEnterKeyPress from "@/hooks/useEnterKeyPress";
 import { useLoginMutation } from "@/store/api/auth/api";
 import { SET_USER_COOKIE } from "@/store/reducer/authSlice";
 import { LoginRequestDto } from "@/types/auth/type";
@@ -20,8 +21,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const [form] = Form.useForm();
-
   const onFinish = async (values: LoginRequestDto) => {
     setSubmitLoader(true);
     await loginMutate(values)
@@ -29,21 +28,15 @@ export default function Login() {
       .then((res) => {
         message.success("Giriş başarılı");
         dispatch(SET_USER_COOKIE(res));
+        setSubmitLoader(false);
       })
       .catch((err: ResponseError) => {
-        if (typeof err.data.message === "string") {
-          message.error(err.data.message);
-        }
-        if (Array.isArray(err.data.message)) {
-          err.data.message.forEach((msg) => {
-            message.error(msg);
-          });
-        }
+        err.data.message.forEach((msg) => {
+          message.error(msg);
+        });
         setSubmitLoader(false);
       });
   };
-
-  useEnterKeyPress(form.submit);
 
   return (
     <FallbackPageWrapper>
@@ -76,21 +69,20 @@ export default function Login() {
                 Hesap Oluştur
               </Link>
             </header>
-            <Form onFinish={onFinish} form={form}>
+            <Form onFinish={onFinish}>
               <Form.Item
                 name="email"
                 rules={[
                   {
                     required: true,
+                    type: "email",
                     message: "Lütfen E-posta adresinizi giriniz!",
                   },
                 ]}
-                className="mb-7"
               >
                 <Input
-                  className=" h-12 !border-gray-400 !bg-primary text-lg text-white placeholder:text-gray-300"
+                  className="h-12 !border-gray-400 !bg-primary text-lg text-white placeholder:text-gray-300"
                   placeholder="E-posta"
-                  type="email"
                   autoFocus
                 />
               </Form.Item>

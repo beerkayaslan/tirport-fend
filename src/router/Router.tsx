@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { FallbackProvider } from "@/components/Fallback/FallbackProvider";
+import Loader from "@/components/Loader";
 import AuthLayout from "@/layouts/AuthLayout";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { ROUTES } from "@/router/url";
@@ -18,7 +19,7 @@ export default function Router() {
   ) as AuthStatusEnum;
 
   if (AUTH_STATUS === AuthStatusEnum.LOADING) {
-    return;
+    return <Loader />;
   }
 
   if (AUTH_STATUS === AuthStatusEnum.LOGGED_IN) {

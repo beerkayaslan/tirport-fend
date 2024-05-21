@@ -3,22 +3,17 @@ import "dayjs/locale/tr";
 import { ConfigProvider } from "antd";
 import trTR from "antd/locale/tr_TR";
 import dayjs from "dayjs";
-import { useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import AuthProvider from "@/providers/AuthProvider";
 import Router from "@/router/Router";
+import { store } from "@/store/index";
 dayjs.locale("tr");
-import Loader from "@/components/Loader";
-import { RootState } from "@/store/index";
-import { AuthStatusEnum } from "@/types/auth/type";
 
 function App() {
-  const AUTH_STATUS = useSelector(
-    (state: RootState) => state.auth.AUTH_STATUS,
-  ) as AuthStatusEnum;
   return (
-    <>
+    <Provider store={store}>
       <ConfigProvider
         locale={trTR}
         theme={{
@@ -33,8 +28,7 @@ function App() {
           </BrowserRouter>
         </AuthProvider>
       </ConfigProvider>
-      {AUTH_STATUS === AuthStatusEnum.LOADING && <Loader />}
-    </>
+    </Provider>
   );
 }
 
