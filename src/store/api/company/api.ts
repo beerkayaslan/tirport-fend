@@ -1,6 +1,10 @@
 import { companyApiService } from '@/store/api/company/service';
-import { CompanyInfoDataResponse, CompanyPostFormDataRequest } from '@/types/company/type';
-import { Response } from '@/types/utils';
+import {
+  CompanyInfoDataResponse,
+  CompanyPostFormDataRequest,
+  ProjectListResponse
+} from '@/types/company/type';
+import { PaginationRequest, Response } from '@/types/utils';
 
 const api = companyApiService.injectEndpoints({
   endpoints: (build) => ({
@@ -23,6 +27,12 @@ const api = companyApiService.injectEndpoints({
         url: `/company`,
         method: 'GET'
       })
+    }),
+    projectsGet: build.query<ProjectListResponse, PaginationRequest>({
+      query: ({ skip, take }) => ({
+        url: `/project?take=${take}&skip=${skip}`,
+        method: 'GET'
+      })
     })
   })
 });
@@ -30,5 +40,6 @@ const api = companyApiService.injectEndpoints({
 export const {
   useCompanyInformationPostMutation,
   useCompanyInformationQuery,
-  useCompanyInformationUpdateMutation
+  useCompanyInformationUpdateMutation,
+  useProjectsGetQuery
 } = api;

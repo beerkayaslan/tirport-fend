@@ -131,7 +131,7 @@ export default function Login() {
               </div>
               <Form.Item>
                 <Button
-                  className="h-11 w-full text-base font-bold"
+                  className="h-11 w-full font-bold"
                   variant="white"
                   htmlType="submit"
                   loading={submitLoader}

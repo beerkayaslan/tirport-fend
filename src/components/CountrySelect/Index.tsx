@@ -14,7 +14,7 @@ export default function CountrySelect({
   // rename array list id to value and name to label
   const options = data?.data.map((item) => ({ value: item.id, label: item.name }));
   return (
-    <Form.Item label="Ülke" {...props}>
+    <Form.Item {...props}>
       <Select options={options} value={value} placeholder="Seçiniz" />
     </Form.Item>
   );

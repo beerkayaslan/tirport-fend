@@ -2,15 +2,15 @@ import { generalApiService } from '@/store/api/general/service';
 import {
   CityRequest,
   CityResponse,
-  CountryRequest,
   CountryResponse,
   TaxOfficeRequest,
   TaxOfficeResponse
 } from '@/types/general/type';
+import { PaginationRequest } from '@/types/utils';
 
 const api = generalApiService.injectEndpoints({
   endpoints: (build) => ({
-    contryGet: build.query<CountryResponse, CountryRequest>({
+    contryGet: build.query<CountryResponse, PaginationRequest>({
       query: ({ take, skip }) => ({
         method: 'GET',
         url: `/localization/country?take=${take}&skip=${skip}`

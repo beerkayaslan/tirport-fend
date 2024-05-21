@@ -93,10 +93,10 @@ export default function CompanyEdit() {
             </Form.Item>
             <Row gutter={24}>
               <Col span={12}>
-                <CountrySelect rules={[{ required: true }]} name="companyCountryId" />
+                <CountrySelect label="Ülke" rules={[{ required: true }]} name="companyCountryId" />
               </Col>
               <Col span={12}>
-                <CitySelect rules={[{ required: true }]} name="companyCityId" />
+                <CitySelect label="Şehir" rules={[{ required: true }]} name="companyCityId" />
               </Col>
             </Row>
             <Form.Item label="Adres" rules={[{ required: true }]} name="companyAddress">
@@ -118,10 +118,14 @@ export default function CompanyEdit() {
               <>
                 <Row gutter={24}>
                   <Col span={12}>
-                    <CountrySelect rules={[{ required: true }]} name="invoiceCountryId" />
+                    <CountrySelect
+                      label="Ülke"
+                      rules={[{ required: true }]}
+                      name="invoiceCountryId"
+                    />
                   </Col>
                   <Col span={12}>
-                    <CitySelect rules={[{ required: true }]} name="invoiceCityId" />
+                    <CitySelect label="Şehir" rules={[{ required: true }]} name="invoiceCityId" />
                   </Col>
                 </Row>
                 <Form.Item label="Adres" rules={[{ required: true }]} name="invoiceAddress">
@@ -133,6 +137,7 @@ export default function CompanyEdit() {
               <Col span={12}>
                 <TaxOfficeSelect
                   name="taxOfficeId"
+                  label="Vergi Dairesi"
                   rules={[{ required: true }]}
                   country={billAddress ? companyCountry : invoiceCountryId}
                   city={billAddress ? companyCity : invoiceCityId}

@@ -25,7 +25,7 @@ export default function TaxOfficeSelect({
     : [];
 
   return (
-    <Form.Item label="Vergi Dairesi" {...props}>
+    <Form.Item {...props}>
       <Select options={options} value={value} placeholder="Seçiniz" />
     </Form.Item>
   );

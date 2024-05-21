@@ -57,7 +57,7 @@ const items: MenuProps['items'] = [
     label: 'Envanter',
     icon: <InventoryIcon className="size-[20px]" />,
     children: [
-      { key: '12', label: 'Sürücü Envanteri' },
+      { key: '12', label: <Link to={URLS.DRIVER_INVENTORY}>Sürücü Envanteri</Link> },
       { key: '13', label: 'Araç Envanteri' }
     ]
   },

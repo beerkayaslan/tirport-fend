@@ -10,7 +10,6 @@ export interface CountryResponse {
   totalCount: number;
 }
 
-export interface CountryRequest extends PaginationRequest {}
 export interface CityRequest extends PaginationRequest {
   country: string;
 }

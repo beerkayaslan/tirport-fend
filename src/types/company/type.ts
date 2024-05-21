@@ -51,3 +51,23 @@ export interface CompanyInfoDataResponse {
     cityId: string;
   };
 }
+export interface ProjectListResponse {
+  data: {
+    id: string;
+    name: string;
+    latitude: string;
+    longitude: string;
+    country: {
+      id: string;
+      name: string;
+    };
+    city: {
+      id: string;
+      name: string;
+      countryId: string;
+    };
+    address: string;
+    addressDescription: string;
+    userCount: number;
+  }[];
+}

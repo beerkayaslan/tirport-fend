@@ -18,7 +18,7 @@ export default function Button({
       type="primary"
       disabled={loading}
       className={classnames(
-        'flex items-center justify-center text-base',
+        'flex h-10 items-center justify-center ',
         {
           'bg-primary': variant === 'primary',
           'bg-green-500 hover:!bg-green-600': variant === 'green',
