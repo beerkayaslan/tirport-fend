@@ -1,0 +1,10 @@
+<svg id="Group_20505" data-name="Group 20505" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_20496" data-name="Group 20496">
+    <rect id="Rectangle_22737" data-name="Rectangle 22737" width="24" height="24" fill="#d2cccc" opacity="0"/>
+    <g id="Laptop_Minimalistic" data-name="Laptop Minimalistic" transform="translate(1 2)">
+      <path id="Path_30153" data-name="Path 30153" d="M3,9.6c0-3.111,0-4.667.967-5.633S6.489,3,9.6,3h6.6c3.111,0,4.667,0,5.633.967S22.8,6.489,22.8,9.6v5.5c0,2.074,0,3.111-.644,3.756s-1.681.644-3.756.644H7.4c-2.074,0-3.111,0-3.756-.644S3,17.174,3,15.1Z" transform="translate(-1.9 -3)" fill="none" stroke="#f9f9f9" stroke-width="1.5"/>
+      <path id="Path_30154" data-name="Path 30154" d="M24,21H2" transform="translate(-2 -1.2)" fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-width="1.5"/>
+      <path id="Path_30155" data-name="Path 30155" d="M15.6,15H9" transform="translate(-1.3 -1.8)" fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

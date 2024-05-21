@@ -22,7 +22,8 @@ function App() {
             colorPrimary: '#002E6D',
             colorPrimaryText: '#002E6D',
             colorText: '#002E6D',
-            colorTextBase: '#002E6D'
+            colorTextBase: '#002E6D',
+            fontFamily: 'Montserrat, sans-serif'
           }
         }}
       >

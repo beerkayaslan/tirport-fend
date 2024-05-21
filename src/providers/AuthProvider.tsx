@@ -63,8 +63,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         }
       }).then(async (response) => {
         if (response.ok) {
-          const data = await response.json();
-          console.log(data);
           dispatch(LOGGED_IN(USER));
         } else {
           dispatch(LOGGED_OUT());

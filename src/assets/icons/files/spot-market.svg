@@ -1,0 +1,10 @@
+<svg id="Group_20512" data-name="Group 20512" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_20498" data-name="Group 20498">
+    <rect id="Rectangle_22734" data-name="Rectangle 22734" width="24" height="24" fill="#d2cccc" opacity="0"/>
+    <g id="Tag" transform="translate(1 1)">
+      <path id="Path_30175" data-name="Path 30175" d="M5,17.551C3.3,15.851,2.451,15,2.135,13.9s-.046-2.274.495-4.617L2.941,7.93C3.4,5.959,3.624,4.973,4.3,4.3s1.66-.9,3.631-1.357L9.281,2.63c2.343-.541,3.514-.811,4.617-.495S15.851,3.3,17.551,5l2.013,2.013C22.521,9.972,24,11.451,24,13.289s-1.479,3.317-4.437,6.275S15.126,24,13.289,24s-3.317-1.479-6.275-4.437Z" transform="translate(-2 -2)" fill="none" stroke="#f9f9f9" stroke-width="1.5"/>
+      <circle id="Ellipse_1227" data-name="Ellipse 1227" cx="2.2" cy="2.2" r="2.2" transform="translate(4.157 7.567) rotate(-45)" fill="none" stroke="#f9f9f9" stroke-width="1.5"/>
+      <path id="Path_30176" data-name="Path 30176" d="M11.542,19.2l7.677-7.677" transform="translate(-1.046 -1.048)" fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

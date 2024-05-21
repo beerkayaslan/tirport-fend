@@ -1,0 +1,10 @@
+<svg id="Group_20508" data-name="Group 20508" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_20494" data-name="Group 20494">
+    <rect id="Rectangle_22735" data-name="Rectangle 22735" width="24" height="24" fill="#d2cccc" opacity="0"/>
+    <g id="Bill_Check" data-name="Bill Check" transform="translate(3 1)">
+      <path id="Path_30161" data-name="Path 30161" d="M18.13,2H7.67a8.023,8.023,0,0,0-2.426.179,3.35,3.35,0,0,0-2.07,2.131A8.738,8.738,0,0,0,3,6.807v15.4a1.06,1.06,0,0,0,1.769.818,1.04,1.04,0,0,1,1.412,0l.531.486a1.823,1.823,0,0,0,2.475,0,1.823,1.823,0,0,1,2.475,0,1.823,1.823,0,0,0,2.475,0,1.823,1.823,0,0,1,2.475,0,1.823,1.823,0,0,0,2.475,0l.531-.486a1.04,1.04,0,0,1,1.412,0,1.06,1.06,0,0,0,1.769-.818V6.807a8.735,8.735,0,0,0-.174-2.5,3.35,3.35,0,0,0-2.07-2.131A8.023,8.023,0,0,0,18.13,2Z" transform="translate(-3 -2)" fill="none" stroke="#f9f9f9" stroke-width="1.5"/>
+      <path id="Path_30162" data-name="Path 30162" d="M9.5,10.64l1.571,1.76L15,8" transform="translate(-2.35 -1.4)" fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_30163" data-name="Path 30163" d="M7.5,15.5h9.9" transform="translate(-2.55 -0.65)" fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

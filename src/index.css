@@ -21,3 +21,30 @@ a:hover{
 .auth-password-input input{
     @apply placeholder:text-gray-300 ;
 }
+
+.sidebar-menu{
+    @apply !bg-transparent select-none
+}
+
+.sidebar-menu .ant-menu-title-content{
+    @apply !text-white !ml-5
+}
+
+.sidebar-menu .ant-menu-item.ant-menu-item-selected{
+    @apply !bg-transparent group-hover:!bg-[#05408f]
+}
+
+.sidebar-menu .ant-menu-item{
+    @apply !px-3
+}
+
+.sidebar-menu .ant-menu-sub .ant-menu-item .ant-menu-title-content{
+    @apply !pl-8 !text-[13px]
+}
+.sidebar-menu .ant-menu-submenu-title{
+    @apply !px-3
+}
+
+.sidebar-menu .ant-menu-submenu-arrow{
+    @apply !text-white
+}
