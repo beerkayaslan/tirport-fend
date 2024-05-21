@@ -1,51 +1,80 @@
-import { Avatar, Col, Form, Input, Radio, Row } from 'antd';
+import { Avatar, Col, Form, Input, message, Modal, Radio, Row } from 'antd';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { CompanyInfoIcon } from '@/assets/icons';
+import BlurScreen from '@/components/BlurScreen';
 import Button from '@/components/Button/Button';
 import CitySelect from '@/components/CitySelect/Index';
 import CountrySelect from '@/components/CountrySelect/Index';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import TaxOfficeSelect from '@/components/TaxOfficeSelect/Index';
-
-enum TaxAddress {
-  Company = 'company',
-  Bill = 'bill'
-}
+import { URLS } from '@/router/url';
+import {
+  useCompanyInformationQuery,
+  useCompanyInformationUpdateMutation
+} from '@/store/api/company/api';
+import { Response } from '@/types/utils';
 
 interface CompanyEditProps {
-  company: string;
-  companyCountry: string;
-  companyCity: string;
-  companyAddress: string;
-  billAddress: string;
-  billCountry: string;
-  billCity: string;
-  billAddressTextarea: string;
-  taxOffice: string;
+  name: string;
+  companyCountryId: string;
+  companyCityId: string;
+  taxOfficeId: string;
   taxId: string;
+  companyAddress: string;
+  isInvoiceAddressSame: boolean;
+  invoiceCountryId: string;
+  invoiceCityId: string;
+  invoiceAddress: string;
 }
 
 export default function CompanyEdit() {
   const [form] = Form.useForm<CompanyEditProps>();
+  const { data, isLoading } = useCompanyInformationQuery();
+  const [updateCompany, { isLoading: updateIsLoading }] = useCompanyInformationUpdateMutation();
+  const navigate = useNavigate();
 
   // watch
-  const companyCountry = Form.useWatch('companyCountry', form);
-  const companyCity = Form.useWatch('companyCity', form);
-  const billCountry = Form.useWatch('billCountry', form);
-  const billCity = Form.useWatch('billCity', form);
-  const billAddress = Form.useWatch('billAddress', form);
+  const companyCountry = Form.useWatch('companyCountryId', form);
+  const companyCity = Form.useWatch('companyCityId', form);
+  const invoiceCountryId = Form.useWatch('invoiceCountryId', form);
+  const invoiceCityId = Form.useWatch('invoiceCityId', form);
+  const billAddress = Form.useWatch('isInvoiceAddressSame', form);
 
   useEffect(() => {
-    form.setFieldValue('billAddress', TaxAddress.Company);
-  }, []);
+    form.setFieldValue('billAddress', true);
+    form.setFieldsValue(data ?? {});
+  }, [data, form]);
 
   const onFinish = (values: CompanyEditProps) => {
-    console.log(values);
+    Modal.confirm({
+      title: 'Kaydetmek istediğinize emin misiniz?',
+      onOk: () => sendHandle(values),
+      footer: (_, { OkBtn, CancelBtn }) => (
+        <>
+          <CancelBtn />
+          <OkBtn />
+        </>
+      )
+    });
+  };
+
+  const sendHandle = (values: CompanyEditProps) => {
+    updateCompany(values)
+      .unwrap()
+      .then(() => {
+        message.success('Başarılı bir şekilde güncellendi');
+        navigate(URLS.COMPANY);
+      })
+      .catch((err: Response) => {
+        message.error(err.data.message);
+      });
   };
 
   return (
     <FallbackPageWrapper>
+      {(isLoading || updateIsLoading) && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <CompanyInfoIcon />
         <span className="text-lg font-semibold">Şirket Bilgileri</span>
@@ -59,39 +88,43 @@ export default function CompanyEdit() {
         </Col>
         <Col span={22}>
           <Form requiredMark layout="vertical" form={form} onFinish={onFinish}>
-            <Form.Item label="Şirket Ünvanı" rules={[{ required: true }]} name="company">
+            <Form.Item label="Şirket Ünvanı" rules={[{ required: true }]} name="name">
               <Input placeholder="Şirket Ünvanı" />
             </Form.Item>
             <Row gutter={24}>
               <Col span={12}>
-                <CountrySelect rules={[{ required: true }]} name="companyCountry" />
+                <CountrySelect rules={[{ required: true }]} name="companyCountryId" />
               </Col>
               <Col span={12}>
-                <CitySelect rules={[{ required: true }]} name="companyCity" />
+                <CitySelect rules={[{ required: true }]} name="companyCityId" />
               </Col>
             </Row>
             <Form.Item label="Adres" rules={[{ required: true }]} name="companyAddress">
               <Input.TextArea placeholder="Adres" rows={3} />
             </Form.Item>
-            <Form.Item rules={[{ required: true }]} name="billAddress" label="Fatura Adresi">
+            <Form.Item
+              rules={[{ required: true }]}
+              name="isInvoiceAddressSame"
+              label="Fatura Adresi"
+            >
               <Radio.Group className="flex flex-col">
-                <Radio value={TaxAddress.Company}> Bu adresi fatura adresim olarak kullan </Radio>
-                <Radio className="mt-3" value={TaxAddress.Bill}>
+                <Radio value={true}> Bu adresi fatura adresim olarak kullan </Radio>
+                <Radio className="mt-3" value={false}>
                   Başka bir fatura adresi belirle{' '}
                 </Radio>
               </Radio.Group>
             </Form.Item>
-            {billAddress === TaxAddress.Bill && (
+            {billAddress === false && (
               <>
                 <Row gutter={24}>
                   <Col span={12}>
-                    <CountrySelect rules={[{ required: true }]} name="billCountry" />
+                    <CountrySelect rules={[{ required: true }]} name="invoiceCountryId" />
                   </Col>
                   <Col span={12}>
-                    <CitySelect rules={[{ required: true }]} name="billCity" />
+                    <CitySelect rules={[{ required: true }]} name="invoiceCityId" />
                   </Col>
                 </Row>
-                <Form.Item label="Adres" rules={[{ required: true }]} name="billAddressTextarea">
+                <Form.Item label="Adres" rules={[{ required: true }]} name="invoiceAddress">
                   <Input.TextArea placeholder="Adres" rows={3} />
                 </Form.Item>
               </>
@@ -99,10 +132,10 @@ export default function CompanyEdit() {
             <Row gutter={24}>
               <Col span={12}>
                 <TaxOfficeSelect
-                  name="taxOffice"
+                  name="taxOfficeId"
                   rules={[{ required: true }]}
-                  country={billAddress === TaxAddress.Company ? companyCountry : billCountry}
-                  city={billAddress === TaxAddress.Company ? companyCity : billCity}
+                  country={billAddress ? companyCountry : invoiceCountryId}
+                  city={billAddress ? companyCity : invoiceCityId}
                 />
               </Col>
               <Col span={12}>

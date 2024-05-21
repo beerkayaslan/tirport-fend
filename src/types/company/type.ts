@@ -10,6 +10,7 @@ export interface CompanyPostFormDataRequest {
   invoiceCityId: string;
   invoiceAddress: string;
 }
+
 export interface CompanyInfoDataResponse {
   id: string;
   name: string;

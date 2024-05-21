@@ -1,7 +1,8 @@
-import { Avatar, Skeleton } from 'antd';
+import { Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { BillInformationIcon, CompanyDetailInfoIcon, CompanyInfoIcon } from '@/assets/icons';
+import BlurScreen from '@/components/BlurScreen';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import { URLS } from '@/router/url';
 import { useCompanyInformationQuery } from '@/store/api/company/api';
@@ -11,18 +12,17 @@ export default function Company() {
 
   return (
     <FallbackPageWrapper>
+      {isLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <CompanyInfoIcon />
-        <span className="text-lg font-semibold">Şirket Bilgileri</span>Button
+        <span className="text-lg font-semibold">Şirket Bilgileri</span>
       </div>
       <div className=" flex items-center gap-x-4">
         <Avatar size={60} className="bg-secondary">
           AÖ
         </Avatar>
         <div>
-          <b className="mb-1 block text-base">
-            {isLoading ? <Skeleton.Button size="small" /> : data?.name}
-          </b>
+          <b className="mb-1 block text-base">{data?.name}</b>
           <div>
             <b>TIRPORT Şirket ID: </b>
             <span>{data?.id}</span>
