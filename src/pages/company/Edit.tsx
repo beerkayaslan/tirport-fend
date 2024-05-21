@@ -51,13 +51,13 @@ export default function CompanyEdit() {
         <span className="text-lg font-semibold">Şirket Bilgileri</span>
       </div>
       <Row gutter={24}>
-        <Col span={3} className="flex flex-col items-center">
-          <Avatar size={90} className="bg-secondary">
+        <Col span={2} className="flex flex-col items-center">
+          <Avatar size={60} className="bg-secondary">
             AÖ
           </Avatar>
           <div className="mt-2">Değiştir</div>
         </Col>
-        <Col span={21}>
+        <Col span={22}>
           <Form requiredMark layout="vertical" form={form} onFinish={onFinish}>
             <Form.Item label="Şirket Ünvanı" rules={[{ required: true }]} name="company">
               <Input placeholder="Şirket Ünvanı" />
@@ -111,7 +111,9 @@ export default function CompanyEdit() {
                 </Form.Item>
               </Col>
             </Row>
-            <Button htmlType="submit">Kaydet</Button>
+            <div className="flex justify-end">
+              <Button htmlType="submit">Kaydet</Button>
+            </div>
           </Form>
         </Col>
       </Row>
