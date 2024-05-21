@@ -7,6 +7,7 @@ import {
   BillManagementIcon,
   CompanyManagementIcon,
   CompletedTransportationIcon,
+  InventoryIcon,
   PinLogoIcon,
   RampManagementIcon,
   ReportsIcon,
@@ -54,7 +55,7 @@ const items: MenuProps['items'] = [
   {
     key: '11',
     label: 'Envanter',
-    icon: <CompanyManagementIcon className="size-[21px]" />,
+    icon: <InventoryIcon className="size-[21px]" />,
     children: [
       { key: '12', label: 'Sürücü Envanteri' },
       { key: '13', label: 'Araç Envanteri' }
@@ -89,7 +90,7 @@ export default function SidebarMenu() {
 
   return (
     <div
-      className="group fixed left-0 h-screen w-14 overflow-hidden bg-primary shadow transition-[width] hover:w-60"
+      className="group fixed left-0 top-0 h-screen w-14 overflow-hidden bg-primary shadow transition-[width] hover:w-60"
       onMouseLeave={leaveHandler}
     >
       <Link to={URLS.INDEX} className="mx-3.5 my-8 block h-14">
