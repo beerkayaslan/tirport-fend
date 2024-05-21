@@ -25,3 +25,20 @@ export interface CityResponse {
   ];
   totalCount: number;
 }
+
+export interface TaxOfficeResponse {
+  data: [
+    {
+      id: string;
+      name: string;
+      cityId: string;
+      countryId: string;
+    }
+  ];
+  totalCount: number;
+}
+
+export interface TaxOfficeRequest extends PaginationRequest {
+  country: string;
+  city: string;
+}

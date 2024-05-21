@@ -1,5 +1,12 @@
 import { generalApiService } from '@/store/api/general/service';
-import { CityRequest, CityResponse, CountryRequest, CountryResponse } from '@/types/general/type';
+import {
+  CityRequest,
+  CityResponse,
+  CountryRequest,
+  CountryResponse,
+  TaxOfficeRequest,
+  TaxOfficeResponse
+} from '@/types/general/type';
 
 const api = generalApiService.injectEndpoints({
   endpoints: (build) => ({
@@ -14,8 +21,14 @@ const api = generalApiService.injectEndpoints({
         method: 'GET',
         url: `/localization/country/${country}/cities?take=${take}&skip=${skip}`
       })
+    }),
+    taxOfficeGet: build.query<TaxOfficeResponse, TaxOfficeRequest>({
+      query: ({ city, country, take, skip }) => ({
+        method: 'GET',
+        url: `/localization/country/${country}/city/${city}/tax-office?take=${take}&skip=${skip}`
+      })
     })
   })
 });
 
-export const { useContryGetQuery, useCityGetQuery, useLazyCityGetQuery } = api;
+export const { useContryGetQuery, useCityGetQuery, useTaxOfficeGetQuery } = api;
