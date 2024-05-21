@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from '@/providers/AuthProvider';
 import Router from '@/router/Router';
 import { store } from '@/store/index';
+
 dayjs.locale('tr');
 
 function App() {
@@ -18,7 +19,10 @@ function App() {
         locale={trTR}
         theme={{
           token: {
-            colorPrimary: '#002E6D'
+            colorPrimary: '#002E6D',
+            colorPrimaryText: '#002E6D',
+            colorText: '#002E6D',
+            colorTextBase: '#002E6D'
           }
         }}
       >

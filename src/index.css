@@ -4,7 +4,11 @@
 @tailwind utilities;
 
 html,body{
-    @apply h-full font-montserrat;
+    @apply h-full;
+}
+
+body{
+    @apply text-primary text-[14px] font-[500] font-montserrat;
 }
 
 #root{
