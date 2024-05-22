@@ -121,7 +121,7 @@ export default function Edit() {
                             <DatePicker
                               className="w-full"
                               disabled={indefinite[index]}
-                              maxDate={dayjs().endOf('day')}
+                              minDate={dayjs().endOf('day')}
                             />
                           </Form.Item>
                         )}

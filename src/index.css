@@ -60,3 +60,7 @@ a:hover{
 .ant-form-item-label label{
     @apply font-semibold
 }
+
+.anticon.anticon-calendar{
+    @apply !text-secondary;
+}

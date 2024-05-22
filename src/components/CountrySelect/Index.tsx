@@ -9,13 +9,13 @@ export default function CountrySelect({
 }: FormItemProps & {
   value?: string | number;
 }) {
-  const { data } = useContryGetQuery({ take: 10, skip: 0 });
+  const { data, isLoading } = useContryGetQuery({ take: 10, skip: 0 });
 
   // rename array list id to value and name to label
   const options = data?.data.map((item) => ({ value: item.id, label: item.name }));
   return (
     <Form.Item {...props}>
-      <Select options={options} value={value} placeholder="Seçiniz" />
+      <Select options={options} loading={isLoading} value={value} placeholder="Seçiniz" />
     </Form.Item>
   );
 }

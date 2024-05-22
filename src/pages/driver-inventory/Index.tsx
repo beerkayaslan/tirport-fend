@@ -20,7 +20,7 @@ export default function DriverInventory() {
               <AddWhiteIcon className="w-4" /> Sürücü Ekle
             </Button>
           </Link>
-          <ProjectSelect rootClassName="w-60" selectClassName="h-11" />
+          <ProjectSelect selectedDefault rootClassName="w-96" selectClassName="h-11" />
         </div>
       </div>
     </FallbackPageWrapper>
