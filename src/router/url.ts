@@ -22,8 +22,8 @@ export const ROUTES = {
 
   ADDRESS: {
     PATH: ADDRESS,
-    DETAIL: { PATH: DETAIL },
-    EDIT: { PATH: EDIT }
+    DETAIL: { PATH: `${ADDRESS}/${DETAIL}` },
+    EDIT: { PATH: `${ADDRESS}/${EDIT}` }
   },
 
   COMPANY: {
@@ -33,26 +33,26 @@ export const ROUTES = {
 
   DRIVER_INVENTORY: {
     PATH: DRIVER_INVENTORY,
-    DETAIL: { PATH: DETAIL },
+    DETAIL: { PATH: `${DRIVER_INVENTORY}/${DETAIL}` },
     EDIT: { PATH: `${DRIVER_INVENTORY}/${EDIT}` }
   },
 
   PROJECT: {
     PATH: PROJECT,
-    DETAIL: { PATH: DETAIL },
-    EDIT: { PATH: EDIT }
+    DETAIL: { PATH: `${PROJECT}/${DETAIL}` },
+    EDIT: { PATH: `${PROJECT}/${EDIT}` }
   },
 
   USER: {
     PATH: USER,
-    DETAIL: { PATH: DETAIL },
-    EDIT: { PATH: EDIT }
+    DETAIL: { PATH: `${USER}/${DETAIL}` },
+    EDIT: { PATH: `${USER}/${EDIT}` }
   },
 
   VEHICLE: {
     PATH: VEHICLE,
-    DETAIL: { PATH: DETAIL },
-    EDIT: { PATH: EDIT }
+    DETAIL: { PATH: `${VEHICLE}/${DETAIL}` },
+    EDIT: { PATH: `${VEHICLE}/${EDIT}` }
   }
 };
 

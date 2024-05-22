@@ -1,5 +1,3 @@
-import { HTMLAttributes, HtmlHTMLAttributes, ImgHTMLAttributes } from 'react';
-
 import AddWhite from './files/add-white.svg';
 import BillInformation from './files/bill-information.svg';
 import BillManagement from './files/bill-management.svg';
