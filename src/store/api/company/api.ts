@@ -1,5 +1,6 @@
 import { companyApiService } from '@/store/api/company/service';
 import {
+  CompanyDriverAddRequestDto,
   CompanyInfoDataResponse,
   CompanyPostFormDataRequest,
   ProjectListResponse
@@ -33,7 +34,19 @@ const api = companyApiService.injectEndpoints({
         url: `/project?take=${take}&skip=${skip}`,
         method: 'GET'
       })
-    })
+    }),
+    companyDriverAdd: build.mutation<void, { body: CompanyDriverAddRequestDto; projectId: string }>(
+      {
+        query: ({ body, projectId }) => ({
+          url: '/company-driver',
+          method: 'POST',
+          body,
+          headers: {
+            projectid: projectId
+          }
+        })
+      }
+    )
   })
 });
 
@@ -41,5 +54,6 @@ export const {
   useCompanyInformationPostMutation,
   useCompanyInformationQuery,
   useCompanyInformationUpdateMutation,
-  useProjectsGetQuery
+  useProjectsGetQuery,
+  useCompanyDriverAddMutation
 } = api;

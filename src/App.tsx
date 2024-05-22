@@ -24,6 +24,17 @@ function App() {
             colorText: '#002E6D',
             colorTextBase: '#002E6D',
             fontFamily: 'Montserrat, sans-serif'
+          },
+          components: {
+            Input: {
+              controlHeight: 38
+            },
+            Select: {
+              controlHeight: 38
+            },
+            DatePicker: {
+              controlHeight: 38
+            }
           }
         }}
       >

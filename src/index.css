@@ -40,3 +40,22 @@ a:hover{
 .sidebar-menu .ant-menu-submenu-arrow{
     @apply !text-white
 }
+.custom-phone-input{
+    @apply !w-full !font-montserrat border-[#d9d9d9] hover:!border-primary border !rounded-[6px] transition-all duration-300 ease-in-out !box-border focus:!border-primary focus:!shadow-none
+}
+.custom-phone-input .flag-dropdown {
+    @apply !border-0 !bg-transparent;
+    
+}
+.custom-phone-input .selected-flag{
+    @apply !bg-transparent;
+}
+
+
+.custom-phone-input .form-control {
+    @apply !w-full !text-primary !h-[37px] !border-0
+}
+
+.ant-form-item-label label{
+    @apply font-semibold
+}

@@ -71,3 +71,10 @@ export interface ProjectListResponse {
     userCount: number;
   }[];
 }
+
+export interface CompanyDriverAddRequestDto {
+  bulk: Array<{
+    phone: string;
+    contractEndDate: string | null;
+  }>;
+}

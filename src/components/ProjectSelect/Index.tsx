@@ -1,6 +1,5 @@
 import { Form, Select } from 'antd';
 import { FormItemProps } from 'antd/lib';
-import { useEffect } from 'react';
 
 import { useProjectsGetQuery } from '@/store/api/company/api';
 

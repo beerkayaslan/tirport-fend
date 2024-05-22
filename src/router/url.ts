@@ -34,7 +34,7 @@ export const ROUTES = {
   DRIVER_INVENTORY: {
     PATH: DRIVER_INVENTORY,
     DETAIL: { PATH: DETAIL },
-    EDIT: { PATH: EDIT }
+    EDIT: { PATH: `${DRIVER_INVENTORY}/${EDIT}` }
   },
 
   PROJECT: {
