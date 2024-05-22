@@ -3,6 +3,7 @@ import {
   CompanyDriverAddRequestDto,
   CompanyInfoDataResponse,
   CompanyPostFormDataRequest,
+  DataTableRequest,
   ProjectListResponse
 } from '@/types/company/type';
 import { PaginationRequest, Response } from '@/types/utils';
@@ -46,7 +47,16 @@ const api = companyApiService.injectEndpoints({
           }
         })
       }
-    )
+    ),
+    dataTable: build.query<void, DataTableRequest>({
+      query: ({ take, skip, url, projectid }) => ({
+        method: 'GET',
+        url: `/${url}?take=${take}&skip=${skip}`,
+        headers: {
+          projectid
+        }
+      })
+    })
   })
 });
 
@@ -55,5 +65,6 @@ export const {
   useCompanyInformationQuery,
   useCompanyInformationUpdateMutation,
   useProjectsGetQuery,
-  useCompanyDriverAddMutation
+  useCompanyDriverAddMutation,
+  useDataTableQuery
 } = api;

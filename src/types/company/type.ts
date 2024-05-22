@@ -1,3 +1,4 @@
+import { PaginationRequest } from '../utils';
 export interface CompanyPostFormDataRequest {
   name: string;
   companyCountryId: string;
@@ -77,4 +78,9 @@ export interface CompanyDriverAddRequestDto {
     phone: string;
     contractEndDate: string | null;
   }>;
+}
+
+export interface DataTableRequest extends PaginationRequest {
+  url: string;
+  projectid?: string;
 }
