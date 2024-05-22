@@ -18,6 +18,9 @@ export default function Index({ ...props }: FormItemProps) {
         disableSearchIcon
         searchPlaceholder="Ara"
         containerClass="custom-phone-input"
+        inputProps={{
+          required: props.required
+        }}
       />
     </Form.Item>
   );
