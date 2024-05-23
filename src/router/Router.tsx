@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import ProgressBar from 'react-topbar-progress-indicator';
 
 import Loader from '@/components/Loader';
 import AuthLayout from '@/layouts/AuthLayout';
