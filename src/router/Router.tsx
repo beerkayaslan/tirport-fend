@@ -31,6 +31,7 @@ const privateRouter = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
+        index: true,
         path: ROUTES.INDEX.PATH,
         lazy: () => import('@/pages/index/Index')
       },
