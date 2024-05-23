@@ -40,10 +40,8 @@ export interface TaxOfficeRequest extends PaginationRequest {
 }
 
 export interface TaxonomyTruckTypesResponse {
-  [key: string]: {
-    id: string;
-    name: string;
-  };
+  id: string;
+  name: string;
 }
 
 export interface TaxonomyTruckTrailersAndBrands {

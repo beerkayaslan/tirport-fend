@@ -31,7 +31,7 @@ const api = generalApiService.injectEndpoints({
         url: `/localization/country/${country}/city/${city}/tax-office?take=${take}&skip=${skip}`
       })
     }),
-    taxonomyTruckTypes: build.query<TaxonomyTruckTypesResponse, void>({
+    taxonomyTruckTypes: build.query<TaxonomyTruckTypesResponse[], void>({
       query: () => ({
         url: `/taxonomy/truck-types`,
         method: 'GET'
