@@ -13,7 +13,7 @@ const COMPANY = 'company';
 const DRIVER_INVENTORY = 'driver-inventory';
 const PROJECT = 'project';
 const USER = 'user';
-const VEHICLE = 'vehicle';
+const VEHICLE_INVENTORY = 'vehicle-inventory';
 
 export const ROUTES = {
   INDEX: { PATH: INDEX },
@@ -49,10 +49,10 @@ export const ROUTES = {
     EDIT: { PATH: `${USER}/${EDIT}` }
   },
 
-  VEHICLE: {
-    PATH: VEHICLE,
-    DETAIL: { PATH: `${VEHICLE}/${DETAIL}` },
-    EDIT: { PATH: `${VEHICLE}/${EDIT}` }
+  VEHICLE_INVENTORY: {
+    PATH: VEHICLE_INVENTORY,
+    DETAIL: { PATH: `${VEHICLE_INVENTORY}/${DETAIL}` },
+    EDIT: { PATH: `${VEHICLE_INVENTORY}/${EDIT}` }
   }
 };
 
@@ -80,7 +80,7 @@ export const URLS = {
   USER_DETAIL: (id: string) => `/${USER}/${DETAIL.replace(':id', id)}`,
   USER_EDIT: (id: string) => `/${USER}/${EDIT.replace(':id', id)}`,
 
-  VEHICLE: `/${VEHICLE}`,
-  VEHICLE_DETAIL: (id: string) => `/${VEHICLE}/${DETAIL.replace(':id', id)}`,
-  VEHICLE_EDIT: (id: string) => `/${VEHICLE}/${EDIT.replace(':id', id)}`
+  VEHICLE_INVENTORY: `/${VEHICLE_INVENTORY}`,
+  VEHICLE_INVENTORY_DETAIL: (id: string) => `/${VEHICLE_INVENTORY}/${DETAIL.replace(':id', id)}`,
+  VEHICLE_INVENTORY_EDIT: (id: string) => `/${VEHICLE_INVENTORY}/${EDIT.replace(':id', id)}`
 };

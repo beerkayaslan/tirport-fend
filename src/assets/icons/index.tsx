@@ -21,6 +21,7 @@ import TrFlag from './files/tr-flag.svg';
 import TransportMethod from './files/transport-method.svg';
 import User from './files/user.svg';
 import UserManagement from './files/user-management.svg';
+import VehicleInventory from './files/vehicle-inventory.svg';
 
 interface IconProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
@@ -92,4 +93,8 @@ export const DriverInventoryIcon = ({ ...props }: IconProps) => (
 );
 export const AddWhiteIcon = ({ ...props }: IconProps) => (
   <img {...props} src={AddWhite} alt="add-white" />
+);
+
+export const VehicleInventoryIcon = ({ ...props }: IconProps) => (
+  <img {...props} src={VehicleInventory} className="size-12" alt="vehicle-inventory" />
 );
