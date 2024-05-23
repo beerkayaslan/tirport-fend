@@ -101,3 +101,28 @@ export interface CompanyVehicleAddRequestDto {
   ownershipType: string;
   contractEndDate?: Date | string | null;
 }
+
+export interface CompanyVehicByIdResponseDto {
+  id: string;
+  plateNumber: string;
+  year: number;
+  truckNetWeight: number;
+  truckMaxWeight: number;
+  truckInsuranceEndDate: Date | string | null;
+  trailerNetWeight: number;
+  trailerMaxWeight: number;
+  trailerInsuranceEndDate: Date | string | null;
+  ownershipType: string;
+  contractEndDate: null | Date | string;
+  truckRegistrationFile: null;
+  truckInsuranceFile: null;
+  trailerRegistrationFile: null;
+  trailerInsuranceFile: null;
+  rentalContractFile: null;
+  createdAt: Date | string | null;
+  updatedAt: Date | string | null;
+  truckType: string;
+  trailer: string;
+  brand: string;
+  driversOnVehicle: string[];
+}

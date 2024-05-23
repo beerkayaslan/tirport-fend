@@ -3,6 +3,7 @@ import {
   CompanyDriverAddRequestDto,
   CompanyInfoDataResponse,
   CompanyPostFormDataRequest,
+  CompanyVehicByIdResponseDto,
   CompanyVehicleAddRequestDto,
   DataTableRequest,
   ProjectListResponse
@@ -70,6 +71,32 @@ const api = companyApiService.injectEndpoints({
           projectid: projectId
         }
       })
+    }),
+    companyVehicleGetById: build.query<void, { id: string }>({
+      query: ({ id }) => ({
+        url: `/vehicle/${id}`,
+        method: 'GET'
+      })
+    }),
+    companyVehicleUpdateById: build.mutation<
+      void,
+      { body: CompanyVehicleAddRequestDto; id: string }
+    >({
+      query: ({ body, id }) => ({
+        url: `/vehicle/${id}`,
+        method: 'PUT',
+        body,
+        headers: {
+          projectid: body.projectId,
+          vehicleid: id
+        }
+      })
+    }),
+    getCompanyVehicById: build.query<CompanyVehicByIdResponseDto, { id: string | undefined }>({
+      query: ({ id }) => ({
+        url: `/vehicle/${id}`,
+        method: 'GET'
+      })
     })
   })
 });
@@ -81,5 +108,8 @@ export const {
   useProjectsGetQuery,
   useCompanyDriverAddMutation,
   useDataTableQuery,
-  useCompanyVehicleAddMutation
+  useCompanyVehicleAddMutation,
+  useLazyCompanyVehicleGetByIdQuery,
+  useCompanyVehicleUpdateByIdMutation,
+  useGetCompanyVehicByIdQuery
 } = api;

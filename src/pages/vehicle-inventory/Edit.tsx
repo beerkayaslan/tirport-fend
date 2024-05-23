@@ -1,14 +1,19 @@
 import { Col, DatePicker, Form, Input, InputNumber, message, Modal, Row, Select } from 'antd';
 import dayjs from 'dayjs';
-import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { VehicleInventoryIcon } from '@/assets/icons';
+import BlurScreen from '@/components/BlurScreen';
 import Button from '@/components/Button/Button';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import ProjectSelect from '@/components/ProjectSelect/Index';
 import { URLS } from '@/router/url';
-import { useCompanyVehicleAddMutation } from '@/store/api/company/api';
+import {
+  useCompanyVehicleAddMutation,
+  useCompanyVehicleUpdateByIdMutation,
+  useLazyCompanyVehicleGetByIdQuery
+} from '@/store/api/company/api';
 import {
   useLazyTaxonomyTrailerAndBrandsQuery,
   useTaxonomyTruckTypesQuery
@@ -32,12 +37,65 @@ const years = Array.from({ length: dayjs().get('year') - 1990 }, (_, i) => {
 
 export default function Edit() {
   const navigate = useNavigate();
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<CompanyVehicleAddRequestDto>();
+
+  const { id } = useParams<{ id: string }>();
+  const [pageLoading, setPageLoading] = useState(true);
+
+  const [fetchVehicleById] = useLazyCompanyVehicleGetByIdQuery();
+
+  useEffect(() => {
+    if (id === 'new') {
+      setPageLoading(false);
+      return;
+    }
+    if (id) {
+      fetchVehicleById({ id })
+        .unwrap()
+        .then((data) => {
+          fetchTrailerAndBrands({ truckTypeId: data.truckTypeId })
+            .unwrap()
+            .then((data) => {
+              setBrandsOptions(
+                data?.brands.map((item: { id: string; name: string }) => ({
+                  value: item.id,
+                  label: item.name
+                }))
+              );
+              setTrailersOptions(
+                data?.trailers.map((item: { id: string; name: string }) => ({
+                  value: item.id,
+                  label: item.name
+                }))
+              );
+            });
+
+          form.setFieldsValue({
+            projectId: data.projectId,
+            plateNumber: data.plateNumber,
+            ownershipType: data.ownershipType,
+            year: data.year,
+            truckTypeId: data.truckTypeId,
+            trailerId: data.trailerId,
+            brandId: data.brandId,
+            truckNetWeight: data.truckNetWeight,
+            truckMaxWeight: data.truckMaxWeight,
+            truckInsuranceEndDate: dayjs(data.truckInsuranceEndDate),
+            trailerNetWeight: data.trailerNetWeight,
+            trailerMaxWeight: data.trailerMaxWeight,
+            trailerInsuranceEndDate: dayjs(data.trailerInsuranceEndDate),
+            contractEndDate: dayjs(data.contractEndDate)
+          });
+          setTimeout(() => setPageLoading(false), 300);
+        });
+    }
+  }, [id]);
 
   const { data: truckTypesData } = useTaxonomyTruckTypesQuery();
   const [fetchTrailerAndBrands] = useLazyTaxonomyTrailerAndBrandsQuery();
 
   const [addVehicle] = useCompanyVehicleAddMutation();
+  const [updateVehicle] = useCompanyVehicleUpdateByIdMutation();
 
   const truckTypesOptions = useMemo(
     () =>
@@ -78,7 +136,29 @@ export default function Edit() {
   };
 
   const sendHandle = (values: CompanyVehicleAddRequestDto) => {
-    addVehicle({
+    if (id === 'new') {
+      addVehicle({
+        body: {
+          contractEndDate: null,
+          trailerNetWeight: null,
+          trailerMaxWeight: null,
+          trailerInsuranceEndDate: null,
+          ...values
+        },
+        projectId: values.projectId
+      })
+        .unwrap()
+        .then(() => {
+          message.success('Başarılı bir şekilde eklendi');
+          navigate(URLS.VEHICLE_INVENTORY);
+        })
+        .catch((err: Response) => {
+          message.error(err.data.message);
+        });
+      return;
+    }
+
+    updateVehicle({
       body: {
         contractEndDate: null,
         trailerNetWeight: null,
@@ -86,11 +166,11 @@ export default function Edit() {
         trailerInsuranceEndDate: null,
         ...values
       },
-      projectId: values.projectId
+      id: id as string
     })
       .unwrap()
       .then(() => {
-        message.success('Başarılı bir şekilde eklendi');
+        message.success('Başarılı bir şekilde güncellendi');
         navigate(URLS.VEHICLE_INVENTORY);
       })
       .catch((err: Response) => {
@@ -100,6 +180,7 @@ export default function Edit() {
 
   return (
     <FallbackPageWrapper>
+      {pageLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <VehicleInventoryIcon />
         <span className="text-lg font-semibold">Araç Ekle</span>
@@ -143,6 +224,7 @@ export default function Edit() {
                         }))
                       );
                     });
+                  form.resetFields(['trailerId']);
                 }}
               />
             </Form.Item>

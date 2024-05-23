@@ -72,12 +72,11 @@ export default function DriverInventory() {
                 menu={{
                   items: [
                     {
-                      label: 'İncele',
-                      key: '1',
-                      onClick: () => alert(data.id)
+                      label: <Link to={URLS.VEHICLE_INVENTORY_DETAIL(data.id)}>İncele</Link>,
+                      key: '1'
                     },
                     {
-                      label: 'Düzenle',
+                      label: <Link to={URLS.VEHICLE_INVENTORY_EDIT(data.id)}>Düzenle</Link>,
                       key: '2'
                     },
                     {

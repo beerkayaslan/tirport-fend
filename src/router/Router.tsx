@@ -21,6 +21,7 @@ const DriverInventoryEdit = lazy(() => import('@/pages/driver-inventory/Edit'));
 
 const VehicleInventory = lazy(() => import('@/pages/vehicle-inventory/Index'));
 const VehicleInventoryEdit = lazy(() => import('@/pages/vehicle-inventory/Edit'));
+const VehicleInventoryDetail = lazy(() => import('@/pages/vehicle-inventory/Detail'));
 
 export default function Router() {
   const AUTH_STATUS = useSelector((state: RootState) => state.auth.AUTH_STATUS) as AuthStatusEnum;
@@ -41,6 +42,7 @@ export default function Router() {
             <Route path={ROUTES.DRIVER_INVENTORY.EDIT.PATH} Component={DriverInventoryEdit} />
             <Route path={ROUTES.VEHICLE_INVENTORY.PATH} Component={VehicleInventory} />
             <Route path={ROUTES.VEHICLE_INVENTORY.EDIT.PATH} Component={VehicleInventoryEdit} />
+            <Route path={ROUTES.VEHICLE_INVENTORY.DETAIL.PATH} Component={VehicleInventoryDetail} />
             <Route path="*" element={<Navigate to={ROUTES.INDEX.PATH} />} />
           </Routes>
         </FallbackProvider>

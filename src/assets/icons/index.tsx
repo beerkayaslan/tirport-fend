@@ -9,6 +9,7 @@ import DownAngle from './files/down-angle.svg';
 import DriverInventory from './files/driver-inventory.svg';
 import Eye from './files/eye.svg';
 import EyeSlash from './files/eye-slash.svg';
+import Id from './files/id.svg';
 import Inventory from './files/inventory.svg';
 import PinLogo from './files/pin-logo.svg';
 import RampManagement from './files/ramp-management.svg';
@@ -98,3 +99,4 @@ export const AddWhiteIcon = ({ ...props }: IconProps) => (
 export const VehicleInventoryIcon = ({ ...props }: IconProps) => (
   <img {...props} src={VehicleInventory} className="size-12" alt="vehicle-inventory" />
 );
+export const IdIcon = ({ ...props }: IconProps) => <img {...props} src={Id} alt="id" />;
