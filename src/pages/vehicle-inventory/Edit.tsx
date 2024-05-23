@@ -114,7 +114,11 @@ export default function Edit() {
               <Input
                 type="text"
                 placeholder="Plaka"
-                onInput={(e) => (e.target.value = e.target.value.toUpperCase())}
+                onInput={(e) =>
+                  ((e.target as HTMLInputElement).value = (
+                    e.target as HTMLInputElement
+                  ).value.toUpperCase())
+                }
               />
             </Form.Item>
           </Col>
