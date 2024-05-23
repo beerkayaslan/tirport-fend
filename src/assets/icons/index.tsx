@@ -9,6 +9,7 @@ import DownAngle from './files/down-angle.svg';
 import DriverInventory from './files/driver-inventory.svg';
 import Eye from './files/eye.svg';
 import EyeSlash from './files/eye-slash.svg';
+import FileReview from './files/file-review.svg';
 import Id from './files/id.svg';
 import Inventory from './files/inventory.svg';
 import PinLogo from './files/pin-logo.svg';
@@ -20,6 +21,7 @@ import SpotMarket from './files/spot-market.svg';
 import Tirboard from './files/tirboard.svg';
 import TrFlag from './files/tr-flag.svg';
 import TransportMethod from './files/transport-method.svg';
+import Upload from './files/upload.svg';
 import User from './files/user.svg';
 import UserManagement from './files/user-management.svg';
 import VehicleInventory from './files/vehicle-inventory.svg';
@@ -100,3 +102,9 @@ export const VehicleInventoryIcon = ({ ...props }: IconProps) => (
   <img {...props} src={VehicleInventory} className="size-12" alt="vehicle-inventory" />
 );
 export const IdIcon = ({ ...props }: IconProps) => <img {...props} src={Id} alt="id" />;
+
+export const FileReviewIcon = ({ ...props }: IconProps) => (
+  <img {...props} src={FileReview} alt="file-review" />
+);
+
+export const UploadIcon = ({ ...props }: IconProps) => <img {...props} src={Upload} alt="upload" />;

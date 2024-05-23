@@ -58,3 +58,13 @@ export interface TaxonomyTruckTrailersAndBrands {
 export interface TaxonomyTruckTypeRequest {
   truckTypeId: string;
 }
+
+export interface FileUploadResponse {
+  fileName: string;
+  preSignedUrl: string;
+  previewUrl: string;
+}
+
+export interface FileUploadRequest {
+  name: string;
+}

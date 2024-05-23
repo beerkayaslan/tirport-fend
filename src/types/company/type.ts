@@ -86,20 +86,25 @@ export interface DataTableRequest extends PaginationRequest {
 }
 
 export interface CompanyVehicleAddRequestDto {
-  projectId: string;
-  plateNumber: string;
-  truckTypeId: string;
-  trailerId: string;
-  brandId: string;
-  year: number | string;
+  projectId?: string;
+  plateNumber?: string;
+  truckTypeId?: string;
+  trailerId?: string;
+  brandId?: string;
+  year?: number | string;
   truckNetWeight?: number;
   truckMaxWeight?: number | null;
   truckInsuranceEndDate?: Date | string | null;
   trailerNetWeight?: number | null;
   trailerMaxWeight?: number | null;
   trailerInsuranceEndDate?: Date | string | null;
-  ownershipType: string;
+  ownershipType?: string;
   contractEndDate?: Date | string | null;
+  truckRegistrationFile?: string | null;
+  truckInsuranceFile?: string | null;
+  trailerRegistrationFile?: string | null;
+  trailerInsuranceFile?: string | null;
+  rentalContractFile?: string | null;
 }
 
 export interface CompanyVehicByIdResponseDto {
@@ -110,6 +115,7 @@ export interface CompanyVehicByIdResponseDto {
   truckMaxWeight: number;
   truckInsuranceEndDate: Date | string | null;
   trailerNetWeight: number;
+  projectId: string;
   trailerMaxWeight: number;
   trailerInsuranceEndDate: Date | string | null;
   ownershipType: string;

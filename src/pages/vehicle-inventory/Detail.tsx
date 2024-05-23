@@ -1,15 +1,41 @@
-import { Avatar, Col, Flex, Row, Space } from 'antd';
+import { Avatar, Col, Flex, message, Row, Space } from 'antd';
 import dayjs from 'dayjs';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { IdIcon, VehicleInventoryIcon } from '@/assets/icons';
 import BlurScreen from '@/components/BlurScreen';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
-import { useGetCompanyVehicByIdQuery } from '@/store/api/company/api';
+import FileUpload from '@/components/FileUpload/Index';
+import {
+  useCompanyVehicleUpdateByIdMutation,
+  useGetCompanyVehicByIdQuery
+} from '@/store/api/company/api';
+import { CompanyVehicleAddRequestDto } from '@/types/company/type';
+import { Response } from '@/types/utils';
 
 export default function Detail() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useGetCompanyVehicByIdQuery({ id });
+  const [updateVehicle] = useCompanyVehicleUpdateByIdMutation();
+  const [url, setUrl] = useState<string | null>(null);
+
+  const updateHandle = (body: CompanyVehicleAddRequestDto) => {
+    updateVehicle({
+      body: {
+        ...data,
+        ...body
+      },
+      id: id as string
+    })
+      .unwrap()
+      .then(() => {
+        message.success('Başarılı bir şekilde yüklendi');
+      })
+      .catch((err: Response) => {
+        message.error(err.data.message);
+      });
+  };
 
   return (
     <FallbackPageWrapper>
@@ -114,6 +140,53 @@ export default function Detail() {
         </Col>
         <Col span={8}>
           <span className="mb-5 block text-lg font-semibold">Araç Belgeleri</span>
+          <Space direction="vertical" className="w-full">
+            <FileUpload
+              text="Çekici Ruhsatı"
+              onDone={(file) =>
+                updateHandle({
+                  truckRegistrationFile: file
+                })
+              }
+              fileName={data?.truckRegistrationFile}
+            />
+            <FileUpload
+              text="Çekici Sigortası"
+              onDone={(file) =>
+                updateHandle({
+                  truckInsuranceFile: file
+                })
+              }
+              fileName={data?.truckInsuranceFile}
+            />
+            <FileUpload
+              text="Römork Ruhsatı"
+              onDone={(file) =>
+                updateHandle({
+                  trailerRegistrationFile: file
+                })
+              }
+              fileName={data?.trailerRegistrationFile}
+            />
+            <FileUpload
+              text="Römork Sigortası"
+              onDone={(file) =>
+                updateHandle({
+                  trailerInsuranceFile: file
+                })
+              }
+              fileName={data?.trailerInsuranceFile}
+            />
+            <FileUpload
+              text="Kira Sözleşmesi"
+              onDone={(file) =>
+                updateHandle({
+                  rentalContractFile: file
+                })
+              }
+              fileName={data?.rentalContractFile}
+            />
+          </Space>
         </Col>
       </Row>
     </FallbackPageWrapper>

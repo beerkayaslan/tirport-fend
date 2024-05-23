@@ -3,6 +3,8 @@ import {
   CityRequest,
   CityResponse,
   CountryResponse,
+  FileUploadRequest,
+  FileUploadResponse,
   TaxOfficeRequest,
   TaxOfficeResponse,
   TaxonomyTruckTrailersAndBrands,
@@ -44,7 +46,16 @@ const api = generalApiService.injectEndpoints({
           method: 'GET'
         })
       }
-    )
+    ),
+    storagePresignedUrl: build.mutation<FileUploadResponse, FileUploadRequest>({
+      query: ({ name }) => ({
+        url: `/storage/presigned-url`,
+        method: 'POST',
+        body: {
+          fileName: name
+        }
+      })
+    })
   })
 });
 
@@ -53,5 +64,6 @@ export const {
   useCityGetQuery,
   useTaxOfficeGetQuery,
   useLazyTaxonomyTrailerAndBrandsQuery,
-  useTaxonomyTruckTypesQuery
+  useTaxonomyTruckTypesQuery,
+  useStoragePresignedUrlMutation
 } = api;
