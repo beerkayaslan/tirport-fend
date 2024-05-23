@@ -1,4 +1,4 @@
-import { Form, Select, Skeleton } from 'antd';
+import { Form, Select } from 'antd';
 import { FormItemProps } from 'antd/lib';
 import { useEffect } from 'react';
 

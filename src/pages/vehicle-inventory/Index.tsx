@@ -10,7 +10,7 @@ import { URLS } from '@/router/url';
 
 interface VehicleInventoryProps {
   id: string;
-  drivers: string[];
+  drivers: string;
   ownershipType: string;
   plateNumber: string;
   trailer: string;
