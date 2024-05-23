@@ -70,7 +70,6 @@ const CustomTable = ({
     key?: string;
   }[];
 }) => {
-  console.log('projectid', projectid);
   const { data, isLoading } = useDataTableQuery({
     ...query,
     projectid,
