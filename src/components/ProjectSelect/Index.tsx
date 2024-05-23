@@ -27,7 +27,15 @@ export default function ProjectSelect({
     }
   }, [data]);
 
-  if (!options) return <Skeleton.Input className={selectClassName} />;
+  // skeleton loader
+  if (!options)
+    return (
+      <div>
+        <Form.Item {...props} className="!mb-0">
+          <Select loading={isLoading} className={selectClassName} placeholder="Proje Seçiniz" />
+        </Form.Item>
+      </div>
+    );
 
   return (
     <Form.Item {...props} className="!mb-0">

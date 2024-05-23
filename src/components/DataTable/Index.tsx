@@ -1,15 +1,20 @@
 import { Table } from 'antd';
-import React from 'react';
+import React, { memo } from 'react';
 
+import ProjectSelect from '@/components/ProjectSelect/Index';
 import { useDataTableQuery } from '@/store/api/company/api';
 
-export default function Index({
+export default memo(function Index({
   url,
   columns,
-  projectid
+  projectidSelect,
+  headerLeft,
+  headerRight
 }: {
   url: string;
-  projectid?: string;
+  projectidSelect?: boolean;
+  headerLeft?: JSX.Element | React.ReactNode | string | number | null;
+  headerRight?: JSX.Element | React.ReactNode | string | number | null;
   columns: {
     render?: (data: never) => JSX.Element | React.ReactNode | string | number | null;
     title: string;
@@ -21,6 +26,51 @@ export default function Index({
     take: 20
   });
 
+  const [projectid, setSelectProjectId] = React.useState<string | undefined>(undefined);
+
+  return (
+    <>
+      <div className="mb-8 flex items-center justify-between">
+        <div className="flex items-center gap-x-2.5">{headerLeft}</div>
+        <div className="flex items-center justify-center gap-x-4">
+          {headerRight}
+          {projectidSelect && (
+            <ProjectSelect
+              onChange={(value) => setSelectProjectId(value)}
+              selectedDefault
+              rootClassName="w-96"
+              selectClassName="h-11"
+            />
+          )}
+        </div>
+      </div>
+      {projectidSelect ? (
+        projectid ? (
+          <CustomTable query={query} projectid={projectid} url={url} columns={columns} />
+        ) : null
+      ) : (
+        <CustomTable query={query} url={url} columns={columns} />
+      )}
+    </>
+  );
+});
+
+const CustomTable = ({
+  query,
+  projectid,
+  url,
+  columns
+}: {
+  query: { skip: number; take: number };
+  projectid?: string | undefined;
+  url: string;
+  columns: {
+    render?: (data: never) => JSX.Element | React.ReactNode | string | number | null;
+    title: string;
+    key?: string;
+  }[];
+}) => {
+  console.log('projectid', projectid);
   const { data, isLoading } = useDataTableQuery({
     ...query,
     projectid,
@@ -45,4 +95,4 @@ export default function Index({
       pagination={false}
     />
   );
-}
+};
