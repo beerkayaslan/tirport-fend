@@ -1,4 +1,4 @@
-import { Col, DatePicker, Form, message, Modal } from 'antd';
+import { Col, DatePicker, Form, Input, message, Modal, Row } from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -67,12 +67,20 @@ export default function Edit() {
         <span className="text-lg font-semibold">Araç Ekle</span>
       </div>
       <Form onFinish={onFinish} layout="vertical">
-        <ProjectSelect
-          rules={[{ required: true }]}
-          label="Proje Seçiniz"
-          name="projectId"
-          rootClassName="!mb-6 w-1/2"
-        />
+        <Row gutter={32}>
+          <Col span={12}>
+            <ProjectSelect rules={[{ required: true }]} label="Proje Seçiniz" name="projectId" />
+          </Col>
+          <Col span={12}>
+            <Form.Item label="Plaka" rules={[{ required: true }]} name="plate">
+              <Input
+                type="text"
+                placeholder="Plaka"
+                onInput={(e) => (e.target.value = e.target.value.toUpperCase())}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
 
         <div className="flex justify-end">
           <Button htmlType="submit">Kaydet</Button>
