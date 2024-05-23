@@ -1,30 +1,24 @@
 import type { MenuProps } from 'antd';
 import { Avatar, Dropdown } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { DownAngleIcon } from '@/assets/icons';
 import { RootState } from '@/store/index';
-
-const items: MenuProps['items'] = [
-  {
-    label: <a href="https://www.antgroup.com">1st menu item</a>,
-    key: '0'
-  },
-  {
-    label: <a href="https://www.aliyun.com">2nd menu item</a>,
-    key: '1'
-  },
-  {
-    type: 'divider'
-  },
-  {
-    label: '3rd menu item',
-    key: '3'
-  }
-];
+import { LOGGED_OUT } from '@/store/reducer/authSlice';
 
 export default function Header() {
   const USER = useSelector((state: RootState) => state.auth.USER);
+  const dispatch = useDispatch();
+
+  const items: MenuProps['items'] = [
+    {
+      label: 'Oturumu Kapat',
+      key: '1',
+      onClick: () => {
+        dispatch(LOGGED_OUT());
+      }
+    }
+  ];
 
   return (
     <div className="fixed left-0 top-0 z-10 flex h-14 w-full items-center justify-end bg-white pr-10 shadow-md">

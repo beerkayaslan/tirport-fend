@@ -10,24 +10,27 @@ import { AuthStatusEnum } from '@/types/auth/type';
 
 const publicRouter = createBrowserRouter([
   {
-    path: '/',
     element: <AuthLayout />,
     children: [
       {
         path: ROUTES.LOGIN.PATH,
-        lazy: () => import('@/pages/auth/login/Index')
+        lazy: () => import('@/pages/auth/login/Index'),
+        index: true
       },
       {
         path: '*',
         element: <Navigate to={ROUTES.LOGIN.PATH} />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <Navigate to={ROUTES.LOGIN.PATH} />
   }
 ]);
 
 const privateRouter = createBrowserRouter([
   {
-    path: '/',
     element: <DashboardLayout />,
     children: [
       {
