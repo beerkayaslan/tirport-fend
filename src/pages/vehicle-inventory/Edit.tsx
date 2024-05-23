@@ -36,12 +36,11 @@ export default function Edit() {
     if (!selectedTruckTypeId) return [];
     return fetchTrailerAndBrands({ truckTypeId: selectedTruckTypeId })
       .unwrap()
-      .then(
-        (data) => console.log(data)
-        // data?.trailers.map((item: { id: string; name: string }) => ({
-        //   value: item.id,
-        //   label: item.name
-        // }))
+      .then((data) =>
+        data?.trailers.map((item: { id: string; name: string }) => ({
+          value: item.id,
+          label: item.name
+        }))
       );
   }, [selectedTruckTypeId]);
 
