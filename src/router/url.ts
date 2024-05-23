@@ -76,9 +76,9 @@ export const URLS = {
   PROJECT_DETAIL: (id: string) => `/${PROJECT}/${DETAIL.replace(':id', id)}`,
   PROJECT_EDIT: (id: string) => `/${PROJECT}/${EDIT.replace(':id', id)}`,
 
-  USER: `/${USER_MANAGEMENT}`,
-  USER_DETAIL: (id: string) => `/${USER_MANAGEMENT}/${DETAIL.replace(':id', id)}`,
-  USER_EDIT: (id: string) => `/${USER_MANAGEMENT}/${EDIT.replace(':id', id)}`,
+  USER_MANAGEMENT: `/${USER_MANAGEMENT}`,
+  USER_MANAGEMENT_DETAIL: (id: string) => `/${USER_MANAGEMENT}/${DETAIL.replace(':id', id)}`,
+  USER_MANAGEMENT_EDIT: (id: string) => `/${USER_MANAGEMENT}/${EDIT.replace(':id', id)}`,
 
   VEHICLE_INVENTORY: `/${VEHICLE_INVENTORY}`,
   VEHICLE_INVENTORY_DETAIL: (id: string) => `/${VEHICLE_INVENTORY}/${DETAIL.replace(':id', id)}`,

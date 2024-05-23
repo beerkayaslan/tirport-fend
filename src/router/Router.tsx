@@ -71,6 +71,10 @@ const privateRouter = createBrowserRouter([
         lazy: () => import('@/pages/user-management/Index')
       },
       {
+        path: ROUTES.USER_MANAGEMENT.EDIT.PATH,
+        lazy: () => import('@/pages/user-management/Edit')
+      },
+      {
         path: '*',
         element: <Navigate to={ROUTES.INDEX.PATH} />
       }
@@ -83,7 +87,7 @@ const privateRouter = createBrowserRouter([
 ]);
 
 export default function Router() {
-  const AUTH_STATUS = useSelector((state: RootState) => state.auth.AUTH_STATUS);
+  const AUTH_STATUS = useSelector((state: RootState) => state.auth.AUTH_STATUS) as AuthStatusEnum;
 
   if (AUTH_STATUS === AuthStatusEnum.LOADING) {
     return <Loader />;

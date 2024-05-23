@@ -24,6 +24,7 @@ import TransportMethod from './files/transport-method.svg';
 import Upload from './files/upload.svg';
 import User from './files/user.svg';
 import UserManagement from './files/user-management.svg';
+import Users from './files/users.svg';
 import VehicleInventory from './files/vehicle-inventory.svg';
 
 interface IconProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
@@ -108,3 +109,5 @@ export const FileReviewIcon = ({ ...props }: IconProps) => (
 );
 
 export const UploadIcon = ({ ...props }: IconProps) => <img {...props} src={Upload} alt="upload" />;
+
+export const UsersIcon = ({ ...props }: IconProps) => <img {...props} src={Users} alt="users" />;
