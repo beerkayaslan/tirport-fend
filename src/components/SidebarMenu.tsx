@@ -49,7 +49,7 @@ const items: MenuProps['items'] = [
   },
   {
     key: '10',
-    label: 'Kullanıcı Yönetimi',
+    label: <Link to={URLS.USER}>Kullanıcı Yönetimi</Link>,
     icon: <UserManagementIcon className="size-[20px]" />
   },
   {

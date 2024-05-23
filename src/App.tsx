@@ -4,7 +4,6 @@ import { ConfigProvider } from 'antd';
 import trTR from 'antd/locale/tr_TR';
 import dayjs from 'dayjs';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 
 import AuthProvider from '@/providers/AuthProvider';
 import Router from '@/router/Router';
@@ -42,9 +41,7 @@ function App() {
         }}
       >
         <AuthProvider>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
+          <Router />
         </AuthProvider>
       </ConfigProvider>
     </Provider>

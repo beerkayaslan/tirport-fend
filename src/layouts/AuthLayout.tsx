@@ -1,3 +1,11 @@
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+import { Outlet } from 'react-router-dom';
+
+import { FallbackProvider } from '@/components/Fallback/FallbackProvider';
+
+export default function AuthLayout() {
+  return (
+    <FallbackProvider>
+      <Outlet />
+    </FallbackProvider>
+  );
 }

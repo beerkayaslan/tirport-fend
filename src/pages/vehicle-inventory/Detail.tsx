@@ -1,6 +1,5 @@
 import { Avatar, Col, Flex, message, Row, Space } from 'antd';
 import dayjs from 'dayjs';
-import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { IdIcon, VehicleInventoryIcon } from '@/assets/icons';
@@ -18,7 +17,6 @@ export default function Detail() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useGetCompanyVehicByIdQuery({ id });
   const [updateVehicle] = useCompanyVehicleUpdateByIdMutation();
-  const [url, setUrl] = useState<string | null>(null);
 
   const updateHandle = (body: CompanyVehicleAddRequestDto) => {
     updateVehicle({
@@ -30,7 +28,7 @@ export default function Detail() {
     })
       .unwrap()
       .then(() => {
-        message.success('Başarılı bir şekilde yüklendi');
+        message.success('Başarılı bir şekilde güncellendi.');
       })
       .catch((err: Response) => {
         message.error(err.data.message);
@@ -82,49 +80,49 @@ export default function Detail() {
           <span className="mb-5 block text-lg font-semibold">Araç Bilgileri</span>
           <Space direction="vertical" size={16}>
             <Flex align="center">
-              <b className="text-primary-light w-52">Envanter</b>
+              <b className="w-52 text-primary-light">Envanter</b>
               <b>{data?.ownershipType}</b>
             </Flex>
             <Flex align="center">
-              <b className="text-primary-light w-52">Marka</b>
+              <b className="w-52 text-primary-light">Marka</b>
               <b>{data?.brand}</b>
             </Flex>
             <Flex align="center">
-              <b className="text-primary-light w-52">Yıl</b>
+              <b className="w-52 text-primary-light">Yıl</b>
               <b>{data?.year}</b>
             </Flex>
             <Flex align="center">
-              <b className="text-primary-light w-52">Araç Tipi</b>
+              <b className="w-52 text-primary-light">Araç Tipi</b>
               <b>{data?.truckType}</b>
             </Flex>
             <Flex align="center">
-              <b className="text-primary-light w-52">Kasa Tipi</b>
+              <b className="w-52 text-primary-light">Kasa Tipi</b>
               <b>{data?.trailer}</b>
             </Flex>
             <Flex align="center">
-              <b className="text-primary-light w-52">Çekici Net Ağırlık</b>
+              <b className="w-52 text-primary-light">Çekici Net Ağırlık</b>
               <b>{data?.truckNetWeight && `${data?.truckNetWeight} kg`} </b>
             </Flex>
             {data?.trailerNetWeight && data.trailerNetWeight > 0 && (
               <Flex align="center">
-                <b className="text-primary-light w-52">Römork Net Ağırlık</b>
+                <b className="w-52 text-primary-light">Römork Net Ağırlık</b>
                 <b>{data.trailerNetWeight} kg</b>
               </Flex>
             )}
             {data?.trailerMaxWeight && data?.trailerMaxWeight > 0 && (
               <Flex align="center">
-                <b className="text-primary-light w-52">Römork Azami Ağırlık</b>
+                <b className="w-52 text-primary-light">Römork Azami Ağırlık</b>
                 <b>{data?.trailerMaxWeight} kg</b>
               </Flex>
             )}
             {data?.contractEndDate && (
               <Flex align="center">
-                <b className="text-primary-light w-52">Kira Bitiş Tarihi</b>
+                <b className="w-52 text-primary-light">Kira Bitiş Tarihi</b>
                 <b>{dayjs(data?.contractEndDate).format('DD.MM.YYYY')}</b>
               </Flex>
             )}
             <Flex align="center">
-              <b className="text-primary-light w-52">Araç Sigorta Bitiş Tarihi</b>
+              <b className="w-52 text-primary-light">Araç Sigorta Bitiş Tarihi</b>
               <b>
                 {data?.truckInsuranceEndDate &&
                   dayjs(data.truckInsuranceEndDate).format('DD.MM.YYYY')}
@@ -132,7 +130,7 @@ export default function Detail() {
             </Flex>
             {data?.trailerInsuranceEndDate && (
               <Flex align="center">
-                <b className="text-primary-light w-52">Çekici Sigorta Bitiş Tarihi</b>
+                <b className="w-52 text-primary-light">Çekici Sigorta Bitiş Tarihi</b>
                 <b>{dayjs(data.trailerInsuranceEndDate).format('DD.MM.YYYY')}</b>
               </Flex>
             )}
@@ -143,47 +141,27 @@ export default function Detail() {
           <Space direction="vertical" className="w-full">
             <FileUpload
               text="Çekici Ruhsatı"
-              onDone={(file) =>
-                updateHandle({
-                  truckRegistrationFile: file
-                })
-              }
+              onDone={(file) => updateHandle({ truckRegistrationFile: file })}
               fileName={data?.truckRegistrationFile}
             />
             <FileUpload
               text="Çekici Sigortası"
-              onDone={(file) =>
-                updateHandle({
-                  truckInsuranceFile: file
-                })
-              }
+              onDone={(file) => updateHandle({ truckInsuranceFile: file })}
               fileName={data?.truckInsuranceFile}
             />
             <FileUpload
               text="Römork Ruhsatı"
-              onDone={(file) =>
-                updateHandle({
-                  trailerRegistrationFile: file
-                })
-              }
+              onDone={(file) => updateHandle({ trailerRegistrationFile: file })}
               fileName={data?.trailerRegistrationFile}
             />
             <FileUpload
               text="Römork Sigortası"
-              onDone={(file) =>
-                updateHandle({
-                  trailerInsuranceFile: file
-                })
-              }
+              onDone={(file) => updateHandle({ trailerInsuranceFile: file })}
               fileName={data?.trailerInsuranceFile}
             />
             <FileUpload
               text="Kira Sözleşmesi"
-              onDone={(file) =>
-                updateHandle({
-                  rentalContractFile: file
-                })
-              }
+              onDone={(file) => updateHandle({ rentalContractFile: file })}
               fileName={data?.rentalContractFile}
             />
           </Space>
