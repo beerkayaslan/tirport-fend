@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 import { IdIcon, VehicleInventoryIcon } from '@/assets/icons';
 import BlurScreen from '@/components/BlurScreen';
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import FileUpload from '@/components/FileUpload/Index';
 import {
   useCompanyVehicleUpdateByIdMutation,
@@ -13,7 +12,7 @@ import {
 import { CompanyVehicleAddRequestDto } from '@/types/company/type';
 import { Response } from '@/types/utils';
 
-export default function Detail() {
+export function Component() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useGetCompanyVehicByIdQuery({ id });
   const [updateVehicle] = useCompanyVehicleUpdateByIdMutation();
@@ -36,7 +35,7 @@ export default function Detail() {
   };
 
   return (
-    <FallbackPageWrapper>
+    <>
       {isLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <VehicleInventoryIcon />
@@ -167,6 +166,6 @@ export default function Detail() {
           </Space>
         </Col>
       </Row>
-    </FallbackPageWrapper>
+    </>
   );
 }

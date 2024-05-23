@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { DriverInventoryIcon } from '@/assets/icons';
 import BlurScreen from '@/components/BlurScreen';
 import Button from '@/components/Button/Button';
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import InputPhone from '@/components/InputPhone/Index';
 import ProjectSelect from '@/components/ProjectSelect/Index';
 import { URLS } from '@/router/url';
@@ -23,7 +22,7 @@ interface CompanyDriverAdd {
   }[];
 }
 
-export default function Edit() {
+export function Component() {
   const [driverAdd, { isLoading }] = useCompanyDriverAddMutation();
 
   const navigate = useNavigate();
@@ -63,7 +62,7 @@ export default function Edit() {
   };
 
   return (
-    <FallbackPageWrapper>
+    <>
       {isLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <DriverInventoryIcon />
@@ -174,6 +173,6 @@ export default function Edit() {
           <Button htmlType="submit">Kaydet</Button>
         </div>
       </Form>
-    </FallbackPageWrapper>
+    </>
   );
 }

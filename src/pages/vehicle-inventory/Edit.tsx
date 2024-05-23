@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { VehicleInventoryIcon } from '@/assets/icons';
 import BlurScreen from '@/components/BlurScreen';
 import Button from '@/components/Button/Button';
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import ProjectSelect from '@/components/ProjectSelect/Index';
 import { URLS } from '@/router/url';
 import {
@@ -35,7 +34,7 @@ const years = Array.from({ length: dayjs().get('year') - 1990 }, (_, i) => {
   return { value: year, label: year.toString() };
 });
 
-export default function Edit() {
+export function Component() {
   const navigate = useNavigate();
   const [form] = Form.useForm<CompanyVehicleAddRequestDto>();
 
@@ -179,7 +178,7 @@ export default function Edit() {
   };
 
   return (
-    <FallbackPageWrapper>
+    <>
       {pageLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <VehicleInventoryIcon />
@@ -336,6 +335,6 @@ export default function Edit() {
           <Button htmlType="submit">Kaydet</Button>
         </div>
       </Form>
-    </FallbackPageWrapper>
+    </>
   );
 }

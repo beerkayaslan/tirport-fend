@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { BillInformationIcon, CompanyDetailInfoIcon, CompanyInfoIcon } from '@/assets/icons';
 import BlurScreen from '@/components/BlurScreen';
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import { URLS } from '@/router/url';
 import { useCompanyInformationQuery } from '@/store/api/company/api';
 
-export default function Company() {
+export function Component() {
   const { data, isLoading } = useCompanyInformationQuery();
 
   return (
-    <FallbackPageWrapper>
+    <>
       {isLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <CompanyInfoIcon />
@@ -89,6 +88,6 @@ export default function Company() {
           Hesabı Sil
         </Link>
       </div>
-    </FallbackPageWrapper>
+    </>
   );
 }

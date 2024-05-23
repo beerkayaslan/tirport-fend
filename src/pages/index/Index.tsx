@@ -1,9 +1,7 @@
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
-
-export default function Index() {
+export function Component() {
   return (
-    <FallbackPageWrapper>
+    <>
       <div>Anasayfa</div>
-    </FallbackPageWrapper>
+    </>
   );
 }

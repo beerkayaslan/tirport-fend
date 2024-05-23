@@ -1,6 +1,6 @@
-import { lazy } from 'react';
 import { useSelector } from 'react-redux';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import ProgressBar from 'react-topbar-progress-indicator';
 
 import Loader from '@/components/Loader';
 import AuthLayout from '@/layouts/AuthLayout';
@@ -9,21 +9,6 @@ import { ROUTES } from '@/router/url';
 import { RootState } from '@/store/index';
 import { AuthStatusEnum } from '@/types/auth/type';
 
-const Index = lazy(() => import('@/pages/index/Index'));
-const Login = lazy(() => import('@/pages/auth/login/Index'));
-
-const Company = lazy(() => import('@/pages/company/Index'));
-const CompanyEdit = lazy(() => import('@/pages/company/Edit'));
-
-const DriverInventory = lazy(() => import('@/pages/driver-inventory/Index'));
-const DriverInventoryEdit = lazy(() => import('@/pages/driver-inventory/Edit'));
-
-const VehicleInventory = lazy(() => import('@/pages/vehicle-inventory/Index'));
-const VehicleInventoryEdit = lazy(() => import('@/pages/vehicle-inventory/Edit'));
-const VehicleInventoryDetail = lazy(() => import('@/pages/vehicle-inventory/Detail'));
-
-const UserManagement = lazy(() => import('@/pages/user-management/Index'));
-
 const publicRouter = createBrowserRouter([
   {
     path: '/',
@@ -31,7 +16,7 @@ const publicRouter = createBrowserRouter([
     children: [
       {
         path: ROUTES.LOGIN.PATH,
-        element: <Login />
+        lazy: () => import('@/pages/auth/login/Index')
       },
       {
         path: '*',
@@ -48,39 +33,43 @@ const privateRouter = createBrowserRouter([
     children: [
       {
         path: ROUTES.INDEX.PATH,
-        element: <Index />
+        lazy: () => import('@/pages/index/Index')
       },
       {
         path: ROUTES.COMPANY.PATH,
-        element: <Company />
+        lazy: () => import('@/pages/company/Index')
       },
       {
         path: ROUTES.COMPANY.EDIT.PATH,
-        element: <CompanyEdit />
+        lazy: () => import('@/pages/company/Edit')
       },
       {
         path: ROUTES.DRIVER_INVENTORY.PATH,
-        element: <DriverInventory />
+        lazy: () => import('@/pages/driver-inventory/Index')
       },
       {
         path: ROUTES.DRIVER_INVENTORY.EDIT.PATH,
-        element: <DriverInventoryEdit />
+        lazy: () => import('@/pages/driver-inventory/Edit')
       },
       {
         path: ROUTES.VEHICLE_INVENTORY.PATH,
-        element: <VehicleInventory />
+        lazy: () => import('@/pages/vehicle-inventory/Index')
       },
       {
         path: ROUTES.VEHICLE_INVENTORY.EDIT.PATH,
-        element: <VehicleInventoryEdit />
+        lazy: () => import('@/pages/vehicle-inventory/Edit')
       },
       {
         path: ROUTES.VEHICLE_INVENTORY.DETAIL.PATH,
-        element: <VehicleInventoryDetail />
+        lazy: () => import('@/pages/vehicle-inventory/Detail')
       },
       {
         path: ROUTES.USER_MANAGEMENT.PATH,
-        element: <UserManagement />
+        lazy: () => import('@/pages/user-management/Index')
+      },
+      {
+        path: '*',
+        element: <Navigate to={ROUTES.INDEX.PATH} />
       }
     ]
   },
@@ -100,6 +89,7 @@ export default function Router() {
   return (
     <RouterProvider
       router={AUTH_STATUS === AuthStatusEnum.LOGGED_IN ? privateRouter : publicRouter}
+      fallbackElement={<Loader />}
     />
   );
 }

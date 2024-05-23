@@ -7,7 +7,6 @@ import BlurScreen from '@/components/BlurScreen';
 import Button from '@/components/Button/Button';
 import CitySelect from '@/components/CitySelect/Index';
 import CountrySelect from '@/components/CountrySelect/Index';
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import TaxOfficeSelect from '@/components/TaxOfficeSelect/Index';
 import { URLS } from '@/router/url';
 import {
@@ -29,7 +28,7 @@ interface CompanyEditProps {
   invoiceAddress: string;
 }
 
-export default function CompanyEdit() {
+export function Component() {
   const [form] = Form.useForm<CompanyEditProps>();
   const { data, isLoading } = useCompanyInformationQuery();
   const [updateCompany, { isLoading: updateIsLoading }] = useCompanyInformationUpdateMutation();
@@ -73,7 +72,7 @@ export default function CompanyEdit() {
   };
 
   return (
-    <FallbackPageWrapper>
+    <>
       {(isLoading || updateIsLoading) && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <CompanyInfoIcon />
@@ -155,6 +154,6 @@ export default function CompanyEdit() {
           </Form>
         </Col>
       </Row>
-    </FallbackPageWrapper>
+    </>
   );
 }

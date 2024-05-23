@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { AddWhiteIcon, VehicleInventoryIcon } from '@/assets/icons';
 import Button from '@/components/Button/Button';
 import DataTable from '@/components/DataTable/Index';
-import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import { URLS } from '@/router/url';
 
 interface VehicleInventoryProps {
@@ -17,9 +16,9 @@ interface VehicleInventoryProps {
   truckType: string;
 }
 
-export default function DriverInventory() {
+export function Component() {
   return (
-    <FallbackPageWrapper>
+    <>
       <DataTable
         url="vehicle"
         projectidSelect
@@ -104,6 +103,6 @@ export default function DriverInventory() {
           }
         ]}
       />
-    </FallbackPageWrapper>
+    </>
   );
 }
