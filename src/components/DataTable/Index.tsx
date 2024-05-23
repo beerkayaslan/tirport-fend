@@ -87,8 +87,8 @@ const CustomTable = ({
       }))}
       loading={isLoading}
       dataSource={
-        data?.data.map((item: never, index: never) => ({
-          ...item,
+        (data as any)?.data.map((item: never, index: never) => ({
+          ...(item as object),
           key: index
         })) || []
       }

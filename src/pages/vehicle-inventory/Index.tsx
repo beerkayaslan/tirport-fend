@@ -10,12 +10,11 @@ import { URLS } from '@/router/url';
 
 interface VehicleInventoryProps {
   id: string;
-  plate: string;
-  vehicleType: string;
-  bodyType: string;
-  drivers: string;
-  owner: string;
-  point: string;
+  drivers: string[];
+  ownershipType: string;
+  plateNumber: string;
+  trailer: string;
+  truckType: string;
 }
 
 export default function DriverInventory() {
@@ -40,15 +39,15 @@ export default function DriverInventory() {
         columns={[
           {
             title: 'Plaka',
-            key: 'plate'
+            key: 'plateNumber'
           },
           {
             title: 'Araç Tipi',
-            key: 'vehicleType'
+            key: 'truckType'
           },
           {
             title: 'Kasa Tipi',
-            key: 'bodyType'
+            key: 'trailer'
           },
           {
             title: 'Atanan Sürücü',
@@ -56,11 +55,11 @@ export default function DriverInventory() {
           },
           {
             title: 'Envanter',
-            key: 'owner'
+            key: 'ownershipType'
           },
           {
             title: 'Puan',
-            key: 'point'
+            render: () => '4.5'
           },
           {
             title: 'İşlemler',

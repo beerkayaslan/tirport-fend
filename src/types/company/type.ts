@@ -93,10 +93,10 @@ export interface CompanyVehicleAddRequestDto {
   brandId: string;
   year: number | string;
   truckNetWeight?: number;
-  truckMaxWeight?: number;
+  truckMaxWeight?: number | null;
   truckInsuranceEndDate?: Date | string | null;
-  trailerNetWeight?: number;
-  trailerMaxWeight?: number;
+  trailerNetWeight?: number | null;
+  trailerMaxWeight?: number | null;
   trailerInsuranceEndDate?: Date | string | null;
   ownershipType: string;
   contractEndDate?: Date | string | null;

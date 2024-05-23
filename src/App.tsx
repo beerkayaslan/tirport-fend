@@ -34,6 +34,9 @@ function App() {
             },
             DatePicker: {
               controlHeight: 38
+            },
+            InputNumber: {
+              controlHeight: 38
             }
           }
         }}
