@@ -2,19 +2,20 @@ import { EllipsisOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { AddWhiteIcon, DriverInventoryIcon, VehicleInventoryIcon } from '@/assets/icons';
+import { AddWhiteIcon, VehicleInventoryIcon } from '@/assets/icons';
 import Button from '@/components/Button/Button';
 import DataTable from '@/components/DataTable/Index';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import { URLS } from '@/router/url';
 
-interface DriverInventoryProps {
-  birthDateAt: string;
-  firstName: string;
+interface VehicleInventoryProps {
   id: string;
-  identificationNumber: string;
-  lastName: string;
-  phone: string;
+  plate: string;
+  vehicleType: string;
+  bodyType: string;
+  drivers: string;
+  owner: string;
+  point: string;
 }
 
 export default function DriverInventory() {
@@ -63,7 +64,7 @@ export default function DriverInventory() {
           },
           {
             title: 'İşlemler',
-            render: (data: DriverInventoryProps) => (
+            render: (data: VehicleInventoryProps) => (
               <Dropdown
                 trigger={['click']}
                 placement="bottomRight"

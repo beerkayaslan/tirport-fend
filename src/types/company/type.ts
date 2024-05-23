@@ -84,3 +84,20 @@ export interface DataTableRequest extends PaginationRequest {
   url: string;
   projectid?: string;
 }
+
+export interface CompanyVehicleAddRequestDto {
+  projectId: string;
+  plateNumber: string;
+  truckTypeId: string;
+  trailerId: string;
+  brandId: string;
+  year: number | string;
+  truckNetWeight?: number;
+  truckMaxWeight?: number;
+  truckInsuranceEndDate?: Date | string | null;
+  trailerNetWeight?: number;
+  trailerMaxWeight?: number;
+  trailerInsuranceEndDate?: Date | string | null;
+  ownershipType: string;
+  contractEndDate?: Date | string | null;
+}

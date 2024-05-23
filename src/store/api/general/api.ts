@@ -4,7 +4,10 @@ import {
   CityResponse,
   CountryResponse,
   TaxOfficeRequest,
-  TaxOfficeResponse
+  TaxOfficeResponse,
+  TaxonomyTruckTrailersAndBrands,
+  TaxonomyTruckTypeRequest,
+  TaxonomyTruckTypesResponse
 } from '@/types/general/type';
 import { PaginationRequest } from '@/types/utils';
 
@@ -27,8 +30,28 @@ const api = generalApiService.injectEndpoints({
         method: 'GET',
         url: `/localization/country/${country}/city/${city}/tax-office?take=${take}&skip=${skip}`
       })
-    })
+    }),
+    taxonomyTruckTypes: build.query<TaxonomyTruckTypesResponse, void>({
+      query: () => ({
+        url: `/taxonomy/truck-types`,
+        method: 'GET'
+      })
+    }),
+    taxonomyTrailerAndBrands: build.query<TaxonomyTruckTrailersAndBrands, TaxonomyTruckTypeRequest>(
+      {
+        query: ({ truckTypeId }) => ({
+          url: `/taxonomy/truck-types/${truckTypeId}/trailers-and-brands`,
+          method: 'GET'
+        })
+      }
+    )
   })
 });
 
-export const { useContryGetQuery, useCityGetQuery, useTaxOfficeGetQuery } = api;
+export const {
+  useContryGetQuery,
+  useCityGetQuery,
+  useTaxOfficeGetQuery,
+  useLazyTaxonomyTrailerAndBrandsQuery,
+  useTaxonomyTruckTypesQuery
+} = api;

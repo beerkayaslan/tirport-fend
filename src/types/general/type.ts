@@ -38,3 +38,25 @@ export interface TaxOfficeRequest extends PaginationRequest {
   country: string;
   city: string;
 }
+
+export interface TaxonomyTruckTypesResponse {
+  [key: string]: {
+    id: string;
+    name: string;
+  };
+}
+
+export interface TaxonomyTruckTrailersAndBrands {
+  trailers: {
+    id: string;
+    name: string;
+  }[];
+  brands: {
+    id: string;
+    name: string;
+  }[];
+}
+
+export interface TaxonomyTruckTypeRequest {
+  truckTypeId: string;
+}

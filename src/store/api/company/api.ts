@@ -3,6 +3,7 @@ import {
   CompanyDriverAddRequestDto,
   CompanyInfoDataResponse,
   CompanyPostFormDataRequest,
+  CompanyVehicleAddRequestDto,
   DataTableRequest,
   ProjectListResponse
 } from '@/types/company/type';
@@ -56,6 +57,19 @@ const api = companyApiService.injectEndpoints({
           projectid
         }
       })
+    }),
+    companyVehicleAdd: build.mutation<
+      void,
+      { body: CompanyVehicleAddRequestDto; projectId: string }
+    >({
+      query: ({ body, projectId }) => ({
+        url: '/vehicle',
+        method: 'POST',
+        body,
+        headers: {
+          projectid: projectId
+        }
+      })
     })
   })
 });
@@ -66,5 +80,6 @@ export const {
   useCompanyInformationUpdateMutation,
   useProjectsGetQuery,
   useCompanyDriverAddMutation,
-  useDataTableQuery
+  useDataTableQuery,
+  useCompanyVehicleAddMutation
 } = api;

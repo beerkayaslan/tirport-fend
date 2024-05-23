@@ -1,32 +1,64 @@
-import { Col, DatePicker, Form, Input, message, Modal, Row } from 'antd';
+import { Col, DatePicker, Form, Input, message, Modal, Row, Select } from 'antd';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { VehicleInventoryIcon } from '@/assets/icons';
-import BlurScreen from '@/components/BlurScreen';
 import Button from '@/components/Button/Button';
 import FallbackPageWrapper from '@/components/Fallback/FallbackPageWrapper';
 import ProjectSelect from '@/components/ProjectSelect/Index';
-import { URLS } from '@/router/url';
-import { useCompanyDriverAddMutation } from '@/store/api/company/api';
-import { Response } from '@/types/utils';
-
-interface CompanyDriverAdd {
-  projectId: string;
-  drivers: {
-    phone: string;
-    contractEndDate: string | null;
-    isIndefinite: boolean;
-  }[];
-}
+import { useCompanyVehicleAddMutation } from '@/store/api/company/api';
+import {
+  useLazyTaxonomyTrailerAndBrandsQuery,
+  useTaxonomyTruckTypesQuery
+} from '@/store/api/general/api';
+import { CompanyVehicleAddRequestDto } from '@/types/company/type';
 
 export default function Edit() {
-  const [driverAdd, { isLoading }] = useCompanyDriverAddMutation();
-
   const navigate = useNavigate();
+  const [form] = Form.useForm();
 
-  const onFinish = (values: CompanyDriverAdd) => {
+  const { data: truckTypesData } = useTaxonomyTruckTypesQuery();
+  const [fetchTrailerAndBrands] = useLazyTaxonomyTrailerAndBrandsQuery();
+
+  const selectedTruckTypeId = Form.useWatch('truckTypeId', { form });
+
+  const truckTypesOptions = useMemo(
+    () =>
+      truckTypesData?.map((item: { id: string; name: string }) => ({
+        value: item.id,
+        label: item.name
+      })),
+    [truckTypesData]
+  );
+
+  const trailersOptions = useMemo(() => {
+    if (!selectedTruckTypeId) return [];
+    return fetchTrailerAndBrands({ truckTypeId: selectedTruckTypeId })
+      .unwrap()
+      .then(
+        (data) => console.log(data)
+        // data?.trailers.map((item: { id: string; name: string }) => ({
+        //   value: item.id,
+        //   label: item.name
+        // }))
+      );
+  }, [selectedTruckTypeId]);
+
+  const [addVehicle] = useCompanyVehicleAddMutation();
+
+  const years = useMemo(() => {
+    const years = [];
+    for (let i = dayjs().get('year'); i > 1990; i--) {
+      years.push(i);
+    }
+    return years;
+  }, []);
+
+  const [selectVehicleType, setSelectVehicleType] = useState<string>('');
+  const [selfOwned, setSelfOwned] = useState<boolean>(false);
+
+  const onFinish = (values: CompanyVehicleAddRequestDto) => {
     Modal.confirm({
       title: 'Kaydetmek istediğinize emin misiniz?',
       onOk: () => sendHandle(values),
@@ -39,45 +71,36 @@ export default function Edit() {
     });
   };
 
-  const sendHandle = (values: CompanyDriverAdd) => {
-    driverAdd({
-      body: {
-        bulk: values.drivers.map((driver) => ({
-          phone: driver.phone,
-          contractEndDate: driver.isIndefinite ? null : driver.contractEndDate
-        }))
-      },
-      projectId: values.projectId
-    })
-      .unwrap()
-      .then(() => {
-        message.success('Başarılı bir şekilde eklendi');
-        navigate(URLS.DRIVER_INVENTORY);
-      })
-      .catch((err: Response) => {
-        message.error(err.data.message);
-      });
-  };
+  const sendHandle = (values: CompanyVehicleAddRequestDto) => {};
 
   return (
     <FallbackPageWrapper>
-      {isLoading && <BlurScreen />}
       <div className="mb-8 flex items-center gap-x-2.5">
         <VehicleInventoryIcon />
         <span className="text-lg font-semibold">Araç Ekle</span>
       </div>
-      <Form onFinish={onFinish} layout="vertical">
+      <Form onFinish={onFinish} layout="vertical" form={form}>
         <Row gutter={32}>
           <Col span={12}>
             <ProjectSelect rules={[{ required: true }]} label="Proje Seçiniz" name="projectId" />
           </Col>
           <Col span={12}>
-            <Form.Item label="Plaka" rules={[{ required: true }]} name="plate">
+            <Form.Item label="Plaka" rules={[{ required: true }]} name="plateNumber">
               <Input
                 type="text"
                 placeholder="Plaka"
                 onInput={(e) => (e.target.value = e.target.value.toUpperCase())}
               />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="Araç Tipi" rules={[{ required: true }]} name="truckTypeId">
+              <Select options={truckTypesOptions} />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="Araç Tipi" rules={[{ required: true }]} name="truckTypeId">
+              <Select options={trailersOptions} />
             </Form.Item>
           </Col>
         </Row>
