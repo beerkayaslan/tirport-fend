@@ -50,11 +50,11 @@ export default function Detail() {
           <div className="p-4 shadow">
             <div className="flex flex-col items-center justify-center gap-y-3 ">
               <Avatar size={108} />
-              <b className="text-lg">34UB1710</b>
+              <b className="text-lg">{data?.plateNumber}</b>
             </div>
             <div className="flex items-center gap-x-3 py-4">
               <IdIcon />
-              41243123123
+              {data?.id}
             </div>
             <div className="flex items-center justify-between">
               <b className="text-base">Atanan Sürücüler</b>
@@ -74,7 +74,7 @@ export default function Detail() {
               <b>Ekleyen</b>
               <p className="mb-3">Mustafa Kubilay Kapkara</p>
               <b>Kayıt Tarihi</b>
-              <p>05.05.2022</p>
+              <p>{dayjs(data?.createdAt).format('DD.MM.YYYY')}</p>
             </div>
           </div>
         </Col>
