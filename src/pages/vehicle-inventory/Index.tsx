@@ -1,8 +1,7 @@
-import { EllipsisOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { AddWhiteIcon, VehicleInventoryIcon } from '@/assets/icons';
+import { AddWhiteIcon, DotsIcon, VehicleInventoryIcon } from '@/assets/icons';
 import Button from '@/components/Button/Button';
 import DataTable from '@/components/DataTable/Index';
 import { URLS } from '@/router/url';
@@ -97,7 +96,7 @@ export function Component() {
                   ]
                 }}
               >
-                <EllipsisOutlined className="cursor-pointer select-none text-4xl  text-secondary" />
+                <DotsIcon className="cursor-pointer select-none p-1.5" />
               </Dropdown>
             )
           }

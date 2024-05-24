@@ -1,5 +1,6 @@
-import { Table } from 'antd';
-import React, { useEffect, useState } from 'react';
+import type { PaginationProps } from 'antd';
+import { Pagination, Table } from 'antd';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import ProjectSelect from '@/components/ProjectSelect/Index';
 import { useDataTableQuery } from '@/store/api/company/api';
@@ -27,11 +28,6 @@ export default function Index({
     key?: string;
   }[];
 }) {
-  const [query, setQuery] = useState({
-    skip: 0,
-    take: 20
-  });
-
   const [loading, setLoading] = useState(true);
 
   const [projectid, setSelectProjectId] = useState<string | undefined>(undefined);
@@ -56,7 +52,6 @@ export default function Index({
       {projectidSelect ? (
         projectid ? (
           <CustomTable
-            query={query}
             projectid={projectid}
             url={url}
             columns={columns}
@@ -67,7 +62,6 @@ export default function Index({
         ) : null
       ) : (
         <CustomTable
-          query={query}
           url={url}
           columns={columns}
           customRender={customRender}
@@ -80,7 +74,6 @@ export default function Index({
 }
 
 const CustomTable = ({
-  query,
   projectid,
   url,
   columns,
@@ -88,7 +81,6 @@ const CustomTable = ({
   customRenderOverlayClassname,
   setLoading
 }: {
-  query: { skip: number; take: number };
   projectid?: string | undefined;
   url: string;
   setLoading: (value: boolean) => void;
@@ -100,8 +92,13 @@ const CustomTable = ({
     key?: string;
   }[];
 }) => {
+  const [skip, setSkip] = useState<number>(0);
+
+  const take = 20;
+
   const { data, isLoading } = useDataTableQuery({
-    ...query,
+    skip,
+    take,
     projectid,
     url
   });
@@ -110,35 +107,64 @@ const CustomTable = ({
     setLoading(isLoading);
   }, [isLoading]);
 
+  const onChange: PaginationProps['onChange'] = (pageNumber) => {
+    console.log('Page: ', pageNumber);
+    setSkip(Number(pageNumber - 1) * take);
+  };
+
+  const pagination = useMemo(
+    () => (
+      <Pagination
+        className="mt-5"
+        showQuickJumper
+        defaultCurrent={1}
+        pageSize={take}
+        showSizeChanger={false}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        total={(data as any)?.totalCount as number}
+        showTotal={(total) => `Toplam ${total} kayıt`}
+        onChange={onChange}
+      />
+    ),
+    [data]
+  );
+
   if (customRender) {
     if (data) {
       return (
-        <div className={customRenderOverlayClassname}>
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          {(data as any)?.data.map((item: never) => customRender(item))}
-        </div>
+        <>
+          <div className={customRenderOverlayClassname}>
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {(data as any)?.data.map((item: never) => customRender(item))}
+          </div>
+          {pagination}
+        </>
       );
     }
     return null;
   }
 
   return (
-    <Table
-      columns={columns?.map((column) => ({
-        title: column.title,
-        dataIndex: column.key,
-        key: column.key,
-        render: (text, record: never) => (column.render ? column.render(record) : text)
-      }))}
-      loading={isLoading}
-      dataSource={
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (data as any)?.data.map((item: never, index: never) => ({
-          ...(item as object),
-          key: index
-        })) || []
-      }
-      pagination={false}
-    />
+    <>
+      <Table
+        className="rounded border"
+        columns={columns?.map((column) => ({
+          title: column.title,
+          dataIndex: column.key,
+          key: column.key,
+          render: (text, record: never) => (column.render ? column.render(record) : text)
+        }))}
+        loading={isLoading}
+        dataSource={
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (data as any)?.data.map((item: never, index: never) => ({
+            ...(item as object),
+            key: index
+          })) || []
+        }
+        pagination={false}
+      />
+      {pagination}
+    </>
   );
 };
