@@ -75,6 +75,10 @@ const privateRouter = createBrowserRouter([
         lazy: () => import('@/pages/user-management/Edit')
       },
       {
+        path: ROUTES.ADDRESS.PATH,
+        lazy: () => import('@/pages/address/Index')
+      },
+      {
         path: '*',
         element: <Navigate to={ROUTES.INDEX.PATH} />
       }

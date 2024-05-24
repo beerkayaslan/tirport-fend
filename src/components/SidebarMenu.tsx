@@ -44,7 +44,7 @@ const items: MenuProps['items'] = [
       { key: '6', label: 'Projeler' },
       { key: '7', label: 'Tedarikçiler' },
       { key: '8', label: 'Müşteriler' },
-      { key: '9', label: 'Adresler' }
+      { key: '9', label: <Link to={URLS.ADDRESS}>Adresler</Link> }
     ]
   },
   {

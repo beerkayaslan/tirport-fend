@@ -1,4 +1,5 @@
 import AddWhite from './files/add-white.svg';
+import AddressMangement from './files/address-management.svg';
 import BillInformation from './files/bill-information.svg';
 import BillManagement from './files/bill-management.svg';
 import CompanyDetailInfo from './files/company-detail-info.svg';
@@ -87,3 +88,5 @@ export const DotsIcon = ({ ...props }: IconProps) => <img {...props} src={Dots} 
 export const CompanyMiniIcon = ({ ...props }: IconProps) => <img {...props} src={CompanyMini} alt="company-mini" />;
 
 export const MailIcon = ({ ...props }: IconProps) => <img {...props} src={Mail} alt="mail" />;
+
+export const AddressMangementIcon = ({ ...props }: IconProps) => <img {...props} src={AddressMangement} alt="address-management" />;
