@@ -13,10 +13,7 @@ import {
   useCompanyVehicleUpdateByIdMutation,
   useLazyCompanyVehicleGetByIdQuery
 } from '@/store/api/company/api';
-import {
-  useLazyTaxonomyTrailerAndBrandsQuery,
-  useTaxonomyTruckTypesQuery
-} from '@/store/api/general/api';
+import { useLazyTaxonomyTrailerAndBrandsQuery, useTaxonomyTruckTypesQuery } from '@/store/api/general/api';
 import { CompanyVehicleAddRequestDto } from '@/types/company/type';
 import { Response } from '@/types/utils';
 
@@ -194,11 +191,7 @@ export function Component() {
               <Input
                 type="text"
                 placeholder="Plaka"
-                onInput={(e) =>
-                  ((e.target as HTMLInputElement).value = (
-                    e.target as HTMLInputElement
-                  ).value.toUpperCase())
-                }
+                onInput={(e) => ((e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.toUpperCase())}
               />
             </Form.Item>
           </Col>
@@ -246,63 +239,39 @@ export function Component() {
                 </Form.Item>
               </Col>
               <Col span={selectedTruckTypeId === TRUCK_TYPE.TRUCK ? 8 : 12}>
-                <Form.Item
-                  label="Çekici Net Ağırlık"
-                  rules={[{ required: true }]}
-                  name="truckNetWeight"
-                >
+                <Form.Item label="Çekici Net Ağırlık" rules={[{ required: true }]} name="truckNetWeight">
                   <InputNumber className="w-full" min="0" addonAfter="kg" />
                 </Form.Item>
               </Col>
               {selectedTruckTypeId === TRUCK_TYPE.TRUCK ? (
                 <>
                   <Col span={8}>
-                    <Form.Item
-                      label="Römork Net Ağırlık"
-                      rules={[{ required: true }]}
-                      name="trailerNetWeight"
-                    >
+                    <Form.Item label="Römork Net Ağırlık" rules={[{ required: true }]} name="trailerNetWeight">
                       <InputNumber className="w-full" min="0" addonAfter="kg" />
                     </Form.Item>
                   </Col>
                   <Col span={8}>
-                    <Form.Item
-                      label="Römork Azami Ağırlık"
-                      rules={[{ required: true }]}
-                      name="trailerMaxWeight"
-                    >
+                    <Form.Item label="Römork Azami Ağırlık" rules={[{ required: true }]} name="trailerMaxWeight">
                       <InputNumber className="w-full" min="0" addonAfter="kg" />
                     </Form.Item>
                   </Col>{' '}
                 </>
               ) : (
                 <Col span={12}>
-                  <Form.Item
-                    label="Çekici Azami Ağırlık"
-                    rules={[{ required: true }]}
-                    name="truckMaxWeight"
-                  >
+                  <Form.Item label="Çekici Azami Ağırlık" rules={[{ required: true }]} name="truckMaxWeight">
                     <InputNumber className="w-full" min="0" addonAfter="kg" />
                   </Form.Item>
                 </Col>
               )}
 
               <Col span={selectedTruckTypeId === TRUCK_TYPE.TRUCK ? 12 : 24}>
-                <Form.Item
-                  label="Çekici Sigorta Bitiş Tarihi"
-                  rules={[{ required: true }]}
-                  name="truckInsuranceEndDate"
-                >
+                <Form.Item label="Çekici Sigorta Bitiş Tarihi" rules={[{ required: true }]} name="truckInsuranceEndDate">
                   <DatePicker className="w-full" minDate={dayjs().endOf('day')} />
                 </Form.Item>
               </Col>
               {selectedTruckTypeId === TRUCK_TYPE.TRUCK && (
                 <Col span={12}>
-                  <Form.Item
-                    label="Römork Sigorta Bitiş Tarihi"
-                    rules={[{ required: true }]}
-                    name="trailerInsuranceEndDate"
-                  >
+                  <Form.Item label="Römork Sigorta Bitiş Tarihi" rules={[{ required: true }]} name="trailerInsuranceEndDate">
                     <DatePicker className="w-full" minDate={dayjs().endOf('day')} />
                   </Form.Item>
                 </Col>
@@ -319,11 +288,7 @@ export function Component() {
               </Col>
               {ownershipType === OWNER.RENTAL && (
                 <Col span={12}>
-                  <Form.Item
-                    label="Sözleşme Bitiş Tarihi"
-                    rules={[{ required: true }]}
-                    name="contractEndDate"
-                  >
+                  <Form.Item label="Sözleşme Bitiş Tarihi" rules={[{ required: true }]} name="contractEndDate">
                     <DatePicker className="w-full" minDate={dayjs().endOf('day')} />
                   </Form.Item>
                 </Col>

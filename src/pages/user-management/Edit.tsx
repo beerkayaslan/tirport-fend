@@ -57,9 +57,7 @@ export function Component() {
       </div>
       <Flex align="center" gap="small" className="mb-6">
         <InfoCircleOutlined />
-        <span className="text-base text-primary-light">
-          En fazla 10 e-posta adresi girebilirsiniz.
-        </span>
+        <span className="text-base text-primary-light">En fazla 10 e-posta adresi girebilirsiniz.</span>
       </Flex>
       <div className="mb-3 border-b pb-3">
         <Row gutter={32}>
@@ -109,10 +107,7 @@ export function Component() {
                     <Flex align="center" justify="center">
                       {fields.length > 1 ? (
                         <Tooltip title="Kaldır">
-                          <MinusCircleOutlined
-                            className="text-lg text-red-500"
-                            onClick={() => remove(name)}
-                          />
+                          <MinusCircleOutlined className="text-lg text-red-500" onClick={() => remove(name)} />
                         </Tooltip>
                       ) : null}
                     </Flex>
@@ -120,12 +115,7 @@ export function Component() {
                 </Row>
               ))}
 
-              <Button
-                disabled={fields.length === 10}
-                type="dashed"
-                onClick={() => add()}
-                icon={<PlusOutlined />}
-              >
+              <Button disabled={fields.length === 10} type="dashed" onClick={() => add()} icon={<PlusOutlined />}>
                 1 Kişi daha ekle
               </Button>
             </>

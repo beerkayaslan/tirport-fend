@@ -103,22 +103,12 @@ export default function Index({
       return <embed src={URL.createObjectURL(selectedFile)} width="470px" height="500px" />;
     }
 
-    return (
-      <img
-        src={URL.createObjectURL(selectedFile)}
-        className="max-h-[400px] w-full object-contain"
-        alt="selected file"
-      />
-    );
+    return <img src={URL.createObjectURL(selectedFile)} className="max-h-[400px] w-full object-contain" alt="selected file" />;
   }, [selectedFile]);
 
   return (
     <>
-      <Flex
-        align="center"
-        justify="space-between"
-        className="h-12 rounded border border-primary px-4"
-      >
+      <Flex align="center" justify="space-between" className="h-12 rounded border border-primary px-4">
         {text}
         <Flex align="center" gap={2}>
           {fileName && (
@@ -135,13 +125,7 @@ export default function Index({
           <Tooltip title="Yükle">
             <label>
               <UploadIcon className=" h-[46px] w-10 cursor-pointer py-3 transition hover:bg-gray-100" />
-              <input
-                type="file"
-                onChange={handleFileChange}
-                hidden
-                accept=".png, .jpg, .jpeg, .pdf"
-                ref={ref}
-              />
+              <input type="file" onChange={handleFileChange} hidden accept=".png, .jpg, .jpeg, .pdf" ref={ref} />
             </label>
           </Tooltip>
         </Flex>
@@ -162,9 +146,7 @@ export default function Index({
           {selectedFile && <p>Seçili Dosya: {selectedFile.name}</p>}
         </Modal>
       )}
-      {previewOpen && fileName && (
-        <FilePreview fileName={fileName} open={{ previewOpen, setPreviewOpen }} />
-      )}
+      {previewOpen && fileName && <FilePreview fileName={fileName} open={{ previewOpen, setPreviewOpen }} />}
     </>
   );
 }

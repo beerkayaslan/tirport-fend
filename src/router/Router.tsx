@@ -93,10 +93,5 @@ export default function Router() {
     return <Loader />;
   }
 
-  return (
-    <RouterProvider
-      router={AUTH_STATUS === AuthStatusEnum.LOGGED_IN ? privateRouter : publicRouter}
-      fallbackElement={<Loader />}
-    />
-  );
+  return <RouterProvider router={AUTH_STATUS === AuthStatusEnum.LOGGED_IN ? privateRouter : publicRouter} fallbackElement={<Loader />} />;
 }

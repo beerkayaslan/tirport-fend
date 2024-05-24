@@ -24,13 +24,7 @@ export default function FilePreview({
       return <embed src={`${PREVIEW_URL}/${fileName}`} width="470px" height="500px" />;
     }
 
-    return (
-      <img
-        src={`${PREVIEW_URL}/${fileName}`}
-        className="max-h-[400px] w-full object-contain"
-        alt="selected file"
-      />
-    );
+    return <img src={`${PREVIEW_URL}/${fileName}`} className="max-h-[400px] w-full object-contain" alt="selected file" />;
   }, [fileName]);
 
   return (

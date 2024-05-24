@@ -40,12 +40,7 @@ export default function Index({
         <div className="flex items-center justify-center gap-x-4">
           {headerRight}
           {projectidSelect && (
-            <ProjectSelect
-              onChange={(value) => setSelectProjectId(value)}
-              selectedDefault
-              rootClassName="w-96"
-              selectClassName="h-11"
-            />
+            <ProjectSelect onChange={(value) => setSelectProjectId(value)} selectedDefault rootClassName="w-96" selectClassName="h-11" />
           )}
         </div>
       </div>

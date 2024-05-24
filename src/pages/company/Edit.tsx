@@ -9,10 +9,7 @@ import CitySelect from '@/components/CitySelect/Index';
 import CountrySelect from '@/components/CountrySelect/Index';
 import TaxOfficeSelect from '@/components/TaxOfficeSelect/Index';
 import { URLS } from '@/router/url';
-import {
-  useCompanyInformationQuery,
-  useCompanyInformationUpdateMutation
-} from '@/store/api/company/api';
+import { useCompanyInformationQuery, useCompanyInformationUpdateMutation } from '@/store/api/company/api';
 import { Response } from '@/types/utils';
 
 interface CompanyEditProps {
@@ -101,11 +98,7 @@ export function Component() {
             <Form.Item label="Adres" rules={[{ required: true }]} name="companyAddress">
               <Input.TextArea placeholder="Adres" rows={3} />
             </Form.Item>
-            <Form.Item
-              rules={[{ required: true }]}
-              name="isInvoiceAddressSame"
-              label="Fatura Adresi"
-            >
+            <Form.Item rules={[{ required: true }]} name="isInvoiceAddressSame" label="Fatura Adresi">
               <Radio.Group className="flex flex-col">
                 <Radio value={true}> Bu adresi fatura adresim olarak kullan </Radio>
                 <Radio className="mt-3" value={false}>
@@ -117,11 +110,7 @@ export function Component() {
               <>
                 <Row gutter={24}>
                   <Col span={12}>
-                    <CountrySelect
-                      label="Ülke"
-                      rules={[{ required: true }]}
-                      name="invoiceCountryId"
-                    />
+                    <CountrySelect label="Ülke" rules={[{ required: true }]} name="invoiceCountryId" />
                   </Col>
                   <Col span={12}>
                     <CitySelect label="Şehir" rules={[{ required: true }]} name="invoiceCityId" />

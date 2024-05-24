@@ -70,13 +70,7 @@ export function Component() {
               </div>
             </div>
             <div className="flex flex-col justify-between">
-              <Dropdown
-                menu={{ items }}
-                trigger={['click']}
-                placement="bottomRight"
-                arrow
-                className="cursor-pointer p-1"
-              >
+              <Dropdown menu={{ items }} trigger={['click']} placement="bottomRight" arrow className="cursor-pointer p-1">
                 <DotsIcon />
               </Dropdown>
               <div className="text-primary-light">{data.status && 'Aktif'}</div>

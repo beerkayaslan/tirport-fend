@@ -16,12 +16,10 @@ export default function TaxOfficeSelect({
   const { data } = useTaxOfficeGetQuery({ take: 10, skip: 0, city, country });
 
   const options = data
-    ? (data as unknown as { id: string; name: string; cityId: string; countryId: string }[]).map(
-        (item) => ({
-          label: item.name,
-          value: item.id
-        })
-      )
+    ? (data as unknown as { id: string; name: string; cityId: string; countryId: string }[]).map((item) => ({
+        label: item.name,
+        value: item.id
+      }))
     : [];
 
   return (

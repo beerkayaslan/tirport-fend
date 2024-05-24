@@ -34,59 +34,27 @@ import VehicleInventory from './files/vehicle-inventory.svg';
 interface IconProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 export const EyeIcon = ({ ...props }: IconProps) => <img {...props} src={Eye} alt="eye" />;
-export const EyeSlashIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={EyeSlash} alt="eye-slash" />
-);
-export const DownAngleIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={DownAngle} alt="down-angle" />
-);
-export const RightAngleIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={RightAngle} alt="right-angle" />
-);
-export const SettingsIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={Settings} alt="settings" />
-);
-export const TrFlagIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={TrFlag} alt="tr-flag" />
-);
+export const EyeSlashIcon = ({ ...props }: IconProps) => <img {...props} src={EyeSlash} alt="eye-slash" />;
+export const DownAngleIcon = ({ ...props }: IconProps) => <img {...props} src={DownAngle} alt="down-angle" />;
+export const RightAngleIcon = ({ ...props }: IconProps) => <img {...props} src={RightAngle} alt="right-angle" />;
+export const SettingsIcon = ({ ...props }: IconProps) => <img {...props} src={Settings} alt="settings" />;
+export const TrFlagIcon = ({ ...props }: IconProps) => <img {...props} src={TrFlag} alt="tr-flag" />;
 export const UserIcon = ({ ...props }: IconProps) => <img {...props} src={User} alt="user" />;
-export const PinLogoIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={PinLogo} alt="pin-logo" />
-);
-export const InventoryIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={Inventory} alt="inventory" />
-);
-export const UserManagementIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={UserManagement} alt="user-management" />
-);
-export const CompanyManagementIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={CompanyManagement} alt="company-management" />
-);
-export const TransportMethodIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={TransportMethod} alt="transport-method" />
-);
-export const SpotMarketIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={SpotMarket} alt="spot-market" />
-);
-export const ReportsIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={Reports} alt="reports" />
-);
-export const BillManagementIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={BillManagement} alt="bill-management" />
-);
+export const PinLogoIcon = ({ ...props }: IconProps) => <img {...props} src={PinLogo} alt="pin-logo" />;
+export const InventoryIcon = ({ ...props }: IconProps) => <img {...props} src={Inventory} alt="inventory" />;
+export const UserManagementIcon = ({ ...props }: IconProps) => <img {...props} src={UserManagement} alt="user-management" />;
+export const CompanyManagementIcon = ({ ...props }: IconProps) => <img {...props} src={CompanyManagement} alt="company-management" />;
+export const TransportMethodIcon = ({ ...props }: IconProps) => <img {...props} src={TransportMethod} alt="transport-method" />;
+export const SpotMarketIcon = ({ ...props }: IconProps) => <img {...props} src={SpotMarket} alt="spot-market" />;
+export const ReportsIcon = ({ ...props }: IconProps) => <img {...props} src={Reports} alt="reports" />;
+export const BillManagementIcon = ({ ...props }: IconProps) => <img {...props} src={BillManagement} alt="bill-management" />;
 export const CompletedTransportationIcon = ({ ...props }: IconProps) => (
   <img {...props} src={CompletedTransportation} alt="completed-transportation" />
 );
-export const RampManagementIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={RampManagement} alt="ramp-management" />
-);
-export const TirboardIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={Tirboard} alt="tirboard" />
-);
+export const RampManagementIcon = ({ ...props }: IconProps) => <img {...props} src={RampManagement} alt="ramp-management" />;
+export const TirboardIcon = ({ ...props }: IconProps) => <img {...props} src={Tirboard} alt="tirboard" />;
 
-export const CompanyInfoIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={CompanyInfo} className="size-12" alt="company-info" />
-);
+export const CompanyInfoIcon = ({ ...props }: IconProps) => <img {...props} src={CompanyInfo} className="size-12" alt="company-info" />;
 
 export const CompanyDetailInfoIcon = ({ ...props }: IconProps) => (
   <img {...props} src={CompanyDetailInfo} className="size-12" alt="company-detail-info" />
@@ -99,18 +67,14 @@ export const BillInformationIcon = ({ ...props }: IconProps) => (
 export const DriverInventoryIcon = ({ ...props }: IconProps) => (
   <img {...props} src={DriverInventory} className="size-12" alt="driver-inventory" />
 );
-export const AddWhiteIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={AddWhite} alt="add-white" />
-);
+export const AddWhiteIcon = ({ ...props }: IconProps) => <img {...props} src={AddWhite} alt="add-white" />;
 
 export const VehicleInventoryIcon = ({ ...props }: IconProps) => (
   <img {...props} src={VehicleInventory} className="size-12" alt="vehicle-inventory" />
 );
 export const IdIcon = ({ ...props }: IconProps) => <img {...props} src={Id} alt="id" />;
 
-export const FileReviewIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={FileReview} alt="file-review" />
-);
+export const FileReviewIcon = ({ ...props }: IconProps) => <img {...props} src={FileReview} alt="file-review" />;
 
 export const UploadIcon = ({ ...props }: IconProps) => <img {...props} src={Upload} alt="upload" />;
 
@@ -120,8 +84,6 @@ export const CopyIcon = ({ ...props }: IconProps) => <img {...props} src={Copy} 
 
 export const DotsIcon = ({ ...props }: IconProps) => <img {...props} src={Dots} alt="dots" />;
 
-export const CompanyMiniIcon = ({ ...props }: IconProps) => (
-  <img {...props} src={CompanyMini} alt="company-mini" />
-);
+export const CompanyMiniIcon = ({ ...props }: IconProps) => <img {...props} src={CompanyMini} alt="company-mini" />;
 
 export const MailIcon = ({ ...props }: IconProps) => <img {...props} src={Mail} alt="mail" />;

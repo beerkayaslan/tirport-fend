@@ -68,10 +68,7 @@ export function Component() {
             autoFocus
           />
         </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[{ required: true, message: 'Lütfen Şifrenizi giriniz!' }]}
-        >
+        <Form.Item name="password" rules={[{ required: true, message: 'Lütfen Şifrenizi giriniz!' }]}>
           <Input.Password
             placeholder="Şifre"
             className="auth-password-input h-12 !border-gray-400 !bg-primary text-lg text-white placeholder:text-gray-300"
@@ -79,15 +76,9 @@ export function Component() {
               return (
                 <>
                   {visible ? (
-                    <EyeIcon
-                      onClick={() => setPasswordVisible((prevState) => !prevState)}
-                      className="cursor-pointer"
-                    />
+                    <EyeIcon onClick={() => setPasswordVisible((prevState) => !prevState)} className="cursor-pointer" />
                   ) : (
-                    <EyeSlashIcon
-                      onClick={() => setPasswordVisible((prevState) => !prevState)}
-                      className="cursor-pointer"
-                    />
+                    <EyeSlashIcon onClick={() => setPasswordVisible((prevState) => !prevState)} className="cursor-pointer" />
                   )}
                 </>
               );
@@ -99,20 +90,12 @@ export function Component() {
           />
         </Form.Item>
         <div className="mb-5 flex justify-end text-gray-300">
-          <Link
-            to="/#"
-            className="cursor-pointer select-none text-base font-semibold text-inherit !underline"
-          >
+          <Link to="/#" className="cursor-pointer select-none text-base font-semibold text-inherit !underline">
             Şifremi Unuttum
           </Link>
         </div>
         <Form.Item>
-          <Button
-            className="h-11 w-full font-bold"
-            variant="white"
-            htmlType="submit"
-            loading={submitLoader}
-          >
+          <Button className="h-11 w-full font-bold" variant="white" htmlType="submit" loading={submitLoader}>
             GİRİŞ YAP
           </Button>
         </Form.Item>

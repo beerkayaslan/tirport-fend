@@ -39,14 +39,12 @@ const api = generalApiService.injectEndpoints({
         method: 'GET'
       })
     }),
-    taxonomyTrailerAndBrands: build.query<TaxonomyTruckTrailersAndBrands, TaxonomyTruckTypeRequest>(
-      {
-        query: ({ truckTypeId }) => ({
-          url: `/taxonomy/truck-types/${truckTypeId}/trailers-and-brands`,
-          method: 'GET'
-        })
-      }
-    ),
+    taxonomyTrailerAndBrands: build.query<TaxonomyTruckTrailersAndBrands, TaxonomyTruckTypeRequest>({
+      query: ({ truckTypeId }) => ({
+        url: `/taxonomy/truck-types/${truckTypeId}/trailers-and-brands`,
+        method: 'GET'
+      })
+    }),
     storagePresignedUrl: build.mutation<FileUploadResponse, FileUploadRequest>({
       query: ({ name }) => ({
         url: `/storage/presigned-url`,

@@ -14,13 +14,9 @@ export default function AuthLayout() {
           <a href="/">
             <img src={logo} className="h-16 object-contain" alt="Logo" />
           </a>
-          <div className="mt-12 inline-block bg-primary px-2.5 py-1 text-4xl">
-            Yükleriniz uçtan uca
-          </div>
+          <div className="mt-12 inline-block bg-primary px-2.5 py-1 text-4xl">Yükleriniz uçtan uca</div>
           <br />
-          <span className="mt-4 inline-block bg-primary px-2.5 py-1 text-4xl font-semibold">
-            TIRPORT GÜVENCESİNDE
-          </span>
+          <span className="mt-4 inline-block bg-primary px-2.5 py-1 text-4xl font-semibold">TIRPORT GÜVENCESİNDE</span>
         </header>
       </div>
       <div className="flex flex-col bg-primary px-5 pt-10 text-gray-200 lg:w-1/2 xl:px-14">

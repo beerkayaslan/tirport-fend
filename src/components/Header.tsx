@@ -30,13 +30,7 @@ export default function Header() {
             <small>{USER?.identity.email}</small>
           </div>
           <Avatar
-            src={
-              <img
-                className="size-10"
-                src="https://randomuser.me/api/portraits/men/52.jpg"
-                alt="avatar"
-              />
-            }
+            src={<img className="size-10" src="https://randomuser.me/api/portraits/men/52.jpg" alt="avatar" />}
             className="size-10 rounded-lg border border-primary"
           />
           <DownAngleIcon width={10} className="ml-2" />

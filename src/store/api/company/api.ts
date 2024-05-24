@@ -39,18 +39,16 @@ const api = companyApiService.injectEndpoints({
         method: 'GET'
       })
     }),
-    companyDriverAdd: build.mutation<void, { body: CompanyDriverAddRequestDto; projectId: string }>(
-      {
-        query: ({ body, projectId }) => ({
-          url: '/company-driver',
-          method: 'POST',
-          body,
-          headers: {
-            projectid: projectId
-          }
-        })
-      }
-    ),
+    companyDriverAdd: build.mutation<void, { body: CompanyDriverAddRequestDto; projectId: string }>({
+      query: ({ body, projectId }) => ({
+        url: '/company-driver',
+        method: 'POST',
+        body,
+        headers: {
+          projectid: projectId
+        }
+      })
+    }),
     dataTable: build.query<void, DataTableRequest>({
       query: ({ take, skip, url, projectid }) => ({
         method: 'GET',
@@ -60,10 +58,7 @@ const api = companyApiService.injectEndpoints({
         }
       })
     }),
-    companyVehicleAdd: build.mutation<
-      void,
-      { body: CompanyVehicleAddRequestDto; projectId: string }
-    >({
+    companyVehicleAdd: build.mutation<void, { body: CompanyVehicleAddRequestDto; projectId: string }>({
       query: ({ body, projectId }) => ({
         url: '/vehicle',
         method: 'POST',
@@ -79,10 +74,7 @@ const api = companyApiService.injectEndpoints({
         method: 'GET'
       })
     }),
-    companyVehicleUpdateById: build.mutation<
-      void,
-      { body: CompanyVehicleAddRequestDto; id: string }
-    >({
+    companyVehicleUpdateById: build.mutation<void, { body: CompanyVehicleAddRequestDto; id: string }>({
       query: ({ body, id }) => ({
         url: `/vehicle/${id}`,
         method: 'PUT',

@@ -69,12 +69,7 @@ export function Component() {
         <span className="text-lg font-semibold">Sürücü Ekle</span>
       </div>
       <Form onFinish={onFinish} autoComplete="off" layout="vertical">
-        <ProjectSelect
-          rules={[{ required: true }]}
-          label="Proje Seçiniz"
-          name="projectId"
-          rootClassName="!mb-6 w-1/2"
-        />
+        <ProjectSelect rules={[{ required: true }]} label="Proje Seçiniz" name="projectId" rootClassName="!mb-6 w-1/2" />
         <Form.List
           name="drivers"
           rules={[
@@ -94,19 +89,12 @@ export function Component() {
                 <div key={key} className="border-t pt-8">
                   <Row gutter={50}>
                     <Col span={12}>
-                      <InputPhone
-                        name={[name, 'phone']}
-                        rules={[{ required: true }]}
-                        required
-                        label="Telefon Numarası"
-                        {...restField}
-                      />
+                      <InputPhone name={[name, 'phone']} rules={[{ required: true }]} required label="Telefon Numarası" {...restField} />
                     </Col>
                     <Col span={11}>
                       <Form.Item
                         shouldUpdate={(prevValues, curValues) =>
-                          prevValues.drivers[index]?.isIndefinite !==
-                          curValues.drivers[index]?.isIndefinite
+                          prevValues.drivers[index]?.isIndefinite !== curValues.drivers[index]?.isIndefinite
                         }
                         className="!mb-0"
                       >
@@ -117,20 +105,12 @@ export function Component() {
                             name={[name, 'contractEndDate']}
                             rules={[{ required: !indefinite[index] }]}
                           >
-                            <DatePicker
-                              className="w-full"
-                              disabled={indefinite[index]}
-                              minDate={dayjs().endOf('day')}
-                            />
+                            <DatePicker className="w-full" disabled={indefinite[index]} minDate={dayjs().endOf('day')} />
                           </Form.Item>
                         )}
                       </Form.Item>
                       <div className="mb-5 flex items-center">
-                        <Form.Item
-                          {...restField}
-                          name={[name, 'isIndefinite']}
-                          rootClassName="!mb-0"
-                        >
+                        <Form.Item {...restField} name={[name, 'isIndefinite']} rootClassName="!mb-0">
                           <Switch
                             checked={indefinite[index]}
                             onChange={(checked) => {
@@ -146,10 +126,7 @@ export function Component() {
                     <div className="flex items-center justify-center">
                       {fields.length > 1 ? (
                         <Tooltip title="Kaldır">
-                          <MinusCircleOutlined
-                            className="text-lg text-red-500"
-                            onClick={() => remove(name)}
-                          />
+                          <MinusCircleOutlined className="text-lg text-red-500" onClick={() => remove(name)} />
                         </Tooltip>
                       ) : null}
                     </div>

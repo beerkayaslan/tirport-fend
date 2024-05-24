@@ -5,10 +5,7 @@ import { useParams } from 'react-router-dom';
 import { IdIcon, VehicleInventoryIcon } from '@/assets/icons';
 import BlurScreen from '@/components/BlurScreen';
 import FileUpload from '@/components/FileUpload/Index';
-import {
-  useCompanyVehicleUpdateByIdMutation,
-  useGetCompanyVehicByIdQuery
-} from '@/store/api/company/api';
+import { useCompanyVehicleUpdateByIdMutation, useGetCompanyVehicByIdQuery } from '@/store/api/company/api';
 import { CompanyVehicleAddRequestDto } from '@/types/company/type';
 import { Response } from '@/types/utils';
 
@@ -122,10 +119,7 @@ export function Component() {
             )}
             <Flex align="center">
               <b className="w-52 text-primary-light">Araç Sigorta Bitiş Tarihi</b>
-              <b>
-                {data?.truckInsuranceEndDate &&
-                  dayjs(data.truckInsuranceEndDate).format('DD.MM.YYYY')}
-              </b>
+              <b>{data?.truckInsuranceEndDate && dayjs(data.truckInsuranceEndDate).format('DD.MM.YYYY')}</b>
             </Flex>
             {data?.trailerInsuranceEndDate && (
               <Flex align="center">
