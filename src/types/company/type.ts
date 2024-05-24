@@ -132,3 +132,18 @@ export interface CompanyVehicByIdResponseDto {
   brand: string;
   driversOnVehicle: string[];
 }
+
+export interface UserManagementListResponse {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  status: boolean | string;
+}
+
+export interface UserInviteRequest {
+  bulk: Array<{
+    email: string;
+    projectIds: Array<string>;
+  }>;
+}

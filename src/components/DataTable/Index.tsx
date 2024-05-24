@@ -1,12 +1,12 @@
 import { Table } from 'antd';
-import React, { memo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ProjectSelect from '@/components/ProjectSelect/Index';
 import { useDataTableQuery } from '@/store/api/company/api';
 
 import BlurScreen from '../BlurScreen';
 
-export default memo(function Index({
+export default function Index({
   url,
   columns,
   projectidSelect,
@@ -77,7 +77,7 @@ export default memo(function Index({
       )}
     </>
   );
-});
+}
 
 const CustomTable = ({
   query,
@@ -106,7 +106,9 @@ const CustomTable = ({
     url
   });
 
-  setLoading(isLoading);
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading]);
 
   if (customRender) {
     if (data) {

@@ -8,12 +8,14 @@ export default function ProjectSelect({
   value,
   selectClassName,
   selectedDefault,
+  mode,
   onChange,
   ...props
 }: FormItemProps & {
   value?: string | number;
   selectClassName?: string;
   selectedDefault?: boolean;
+  mode?: 'multiple' | 'tags';
   onChange?: (value: string) => void;
 }) {
   const { data, isLoading } = useProjectsGetQuery({ take: 20, skip: 0 });
@@ -30,22 +32,20 @@ export default function ProjectSelect({
   // skeleton loader
   if (!options)
     return (
-      <div>
-        <Form.Item {...props} className="!mb-0">
-          <Select loading={isLoading} className={selectClassName} placeholder="Proje Seçiniz" />
-        </Form.Item>
-      </div>
+      <Form.Item {...props} className="!mb-0">
+        <Select loading={isLoading} className={selectClassName} placeholder="Proje Seçiniz" />
+      </Form.Item>
     );
 
   return (
     <Form.Item {...props} className="!mb-0">
       <Select
-        loading={isLoading}
         className={selectClassName}
         options={options}
         defaultValue={value || (selectedDefault && options[0].value)}
         onChange={(value) => onChange?.(value as string)}
         placeholder="Proje Seçiniz"
+        mode={mode}
       />
     </Form.Item>
   );

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Group_21382" data-name="Group 21382" transform="translate(-635 -487)">
+    <g id="Rectangle_22849" data-name="Rectangle 22849" transform="translate(635 487)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="32" height="32" stroke="none"/>
+      <rect x="0.5" y="0.5" width="31" height="31" fill="none"/>
+    </g>
+    <path id="mail" d="M9.267,10.844c1.711,1.14,3.566,2.711,4.491,2.932a5.335,5.335,0,0,0,2.486,0c.924-.222,2.78-1.792,4.491-2.932M7.267,23.667H22.733a6.625,6.625,0,0,0,2.811-.291,2.666,2.666,0,0,0,1.165-1.165A6.625,6.625,0,0,0,27,19.4V9.267a6.625,6.625,0,0,0-.291-2.811,2.666,2.666,0,0,0-1.165-1.165A6.625,6.625,0,0,0,22.733,5H7.267a6.625,6.625,0,0,0-2.811.291A2.666,2.666,0,0,0,3.291,6.456,6.625,6.625,0,0,0,3,9.267V19.4a6.625,6.625,0,0,0,.291,2.811,2.666,2.666,0,0,0,1.165,1.165A6.625,6.625,0,0,0,7.267,23.667Z" transform="translate(635.333 489.333)" fill="none" stroke="#002e6d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

@@ -18,10 +18,7 @@ export default function FilePreview({
     if (!fileName) {
       return null;
     }
-
     const fileExtension = fileName.split('.').pop();
-
-    console.log('fileExtension', fileExtension);
 
     if (fileExtension === 'pdf') {
       return <embed src={`${PREVIEW_URL}/${fileName}`} width="470px" height="500px" />;

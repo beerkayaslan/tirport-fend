@@ -4,7 +4,10 @@ import BillManagement from './files/bill-management.svg';
 import CompanyDetailInfo from './files/company-detail-info.svg';
 import CompanyInfo from './files/company-info.svg';
 import CompanyManagement from './files/company-management.svg';
+import CompanyMini from './files/company-mini.svg';
 import CompletedTransportation from './files/completed-transportation.svg';
+import Copy from './files/copy.svg';
+import Dots from './files/dots.svg';
 import DownAngle from './files/down-angle.svg';
 import DriverInventory from './files/driver-inventory.svg';
 import Eye from './files/eye.svg';
@@ -12,6 +15,7 @@ import EyeSlash from './files/eye-slash.svg';
 import FileReview from './files/file-review.svg';
 import Id from './files/id.svg';
 import Inventory from './files/inventory.svg';
+import Mail from './files/mail.svg';
 import PinLogo from './files/pin-logo.svg';
 import RampManagement from './files/ramp-management.svg';
 import Reports from './files/reports.svg';
@@ -111,3 +115,13 @@ export const FileReviewIcon = ({ ...props }: IconProps) => (
 export const UploadIcon = ({ ...props }: IconProps) => <img {...props} src={Upload} alt="upload" />;
 
 export const UsersIcon = ({ ...props }: IconProps) => <img {...props} src={Users} alt="users" />;
+
+export const CopyIcon = ({ ...props }: IconProps) => <img {...props} src={Copy} alt="copy" />;
+
+export const DotsIcon = ({ ...props }: IconProps) => <img {...props} src={Dots} alt="dots" />;
+
+export const CompanyMiniIcon = ({ ...props }: IconProps) => (
+  <img {...props} src={CompanyMini} alt="company-mini" />
+);
+
+export const MailIcon = ({ ...props }: IconProps) => <img {...props} src={Mail} alt="mail" />;

@@ -17,7 +17,6 @@ interface DriverInventoryProps {
 }
 
 export function Component() {
-  console.log('test');
   return (
     <>
       <DataTable

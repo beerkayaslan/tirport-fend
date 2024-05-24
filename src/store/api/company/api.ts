@@ -6,7 +6,8 @@ import {
   CompanyVehicByIdResponseDto,
   CompanyVehicleAddRequestDto,
   DataTableRequest,
-  ProjectListResponse
+  ProjectListResponse,
+  UserInviteRequest
 } from '@/types/company/type';
 import { PaginationRequest, Response } from '@/types/utils';
 
@@ -97,6 +98,13 @@ const api = companyApiService.injectEndpoints({
         url: `/vehicle/${id}`,
         method: 'GET'
       })
+    }),
+    companyInviteUser: build.mutation<void, UserInviteRequest>({
+      query: (body) => ({
+        url: `/company-user`,
+        method: 'POST',
+        body
+      })
     })
   })
 });
@@ -111,5 +119,6 @@ export const {
   useCompanyVehicleAddMutation,
   useLazyCompanyVehicleGetByIdQuery,
   useCompanyVehicleUpdateByIdMutation,
-  useGetCompanyVehicByIdQuery
+  useGetCompanyVehicByIdQuery,
+  useCompanyInviteUserMutation
 } = api;
