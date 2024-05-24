@@ -57,11 +57,11 @@ export function Component() {
               <div className="flex flex-col gap-y-2">
                 <b className="text-base">{data.name}</b>
                 <p className="flex items-center">
-                  <div className="w-8 cursor-pointer" onClick={() => copy(data.email)}>
+                  <span className="w-8 cursor-pointer" onClick={() => copy(data.email)}>
                     <Tooltip title="Kopyala">
                       <CopyIcon />
                     </Tooltip>
-                  </div>
+                  </span>
                   {data.email}
                 </p>
                 <p className="flex items-center">
