@@ -91,7 +91,7 @@ export function Component() {
           />
         </Form.Item>
         <div className="mb-5 flex justify-end text-gray-300">
-          <Link to="/#" className="cursor-pointer select-none text-base font-semibold text-inherit !underline">
+          <Link to="#" className="cursor-pointer select-none text-base font-semibold text-inherit !underline">
             Şifremi Unuttum
           </Link>
         </div>
