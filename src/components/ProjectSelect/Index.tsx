@@ -32,14 +32,17 @@ export default function ProjectSelect({
   // skeleton loader
   if (!options)
     return (
-      <Form.Item {...props} className="!mb-0">
-        <Select loading={isLoading} className={selectClassName} placeholder="Proje Seçiniz" />
-      </Form.Item>
+      <div className="w-full">
+        <Form.Item {...props} className="!mb-0">
+          <Select loading={isLoading} className={selectClassName} placeholder="Proje Seçiniz" />
+        </Form.Item>
+      </div>
     );
 
   return (
     <Form.Item {...props} className="!mb-0">
       <Select
+        loading={isLoading}
         className={selectClassName}
         options={options}
         defaultValue={value || (selectedDefault && options[0].value)}
