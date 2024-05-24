@@ -56,6 +56,7 @@ export function Component() {
           rules={[
             {
               required: true,
+              type: 'email',
               message: 'Lütfen E-posta adresinizi giriniz!'
             }
           ]}
