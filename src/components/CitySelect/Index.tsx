@@ -15,7 +15,7 @@ export default function CitySelect({
   const options = data?.data.map((item) => ({ value: item.id, label: item.name }));
   return (
     <Form.Item {...props}>
-      <Select options={options} loading={isLoading} value={value} placeholder="Seçiniz" />
+      <Select options={options} loading={isLoading} value={value} placeholder="Seçiniz" showSearch />
     </Form.Item>
   );
 }
